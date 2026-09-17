@@ -23,11 +23,11 @@ function initIdentificacao() {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const data = {
-      nome: document.getElementById('nome').value.trim(),
-      email: document.getElementById('email').value.trim(),
-      area: document.getElementById('area').value,
-      rede: document.getElementById('rede').value,
-      lgpd: document.getElementById('lgpd').checked,
+      nome: document.getElementById('f-nome').value.trim(),
+      email: document.getElementById('f-email').value.trim(),
+      area: document.getElementById('f-area').value,
+      rede: document.getElementById('f-rede').value,
+      lgpd: document.getElementById('f-lgpd').checked,
       timestamp: new Date().toISOString()
     };
     
