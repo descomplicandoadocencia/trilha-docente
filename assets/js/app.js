@@ -205,6 +205,6 @@ async function initAula() {
   nf.innerHTML = `
     ${prev ? `<a class="btn ghost sm" href="aula.html?video=${prev.id}">← Anterior</a>` : '<span></span>'}
     <div class="next-info">${next ? 'A seguir: <strong>' + next.titulo + '</strong>' : '🏆 Última missão da trilha!'}</div>
-    ${next ? `<a class="btn sm" href="aula.html?video=${next.id}">Próximo →</a>` : '<a class="btn sm" href="index.html">🏆 Ver meu progresso</a>'}`;
+    ${next ? `<a class="btn sm" href="aula.html?video=${next.id}">Próximo →</a>` : '<a class="btn sm" href="final.html">🏆 Ir à tela final · Certificado</a>'}`;
   renderStats();
 }

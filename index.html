@@ -28,6 +28,7 @@
   <nav>
     <a href="index.html">Mapa</a>
     <a href="videoteca.html">Videoteca</a>
+    <a href="final.html">🏆 Certificado</a>
   </nav>
 </header>
 <div class="pbar"><span></span></div>
@@ -43,9 +44,61 @@
 </section>
 
 <main class="wrap" id="conteudo">
+  <!-- ETAPA 1: Painel de identificação do estudante -->
+  <section id="identificacao" class="identificacao-panel" aria-labelledby="ident-title">
+    <h2 id="ident-title" style="margin-top:40px">🪪 Identifique-se para iniciar sua jornada</h2>
+    <p>Seus dados personalizam a trilha, compõem seu certificado e alimentam a pesquisa educacional do projeto.</p>
+    <form id="formIdentificacao" class="form-grid" novalidate>
+      <div class="form-group">
+        <label for="f-nome">Nome completo *</label>
+        <input type="text" id="f-nome" name="nome" required placeholder="Ex.: Maria da Silva Souza" autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label for="f-email">E-mail institucional *</label>
+        <input type="email" id="f-email" name="email" required placeholder="seu.nome@escola.edu.br" autocomplete="email">
+      </div>
+      <div class="form-group">
+        <label for="f-area">Área de atuação *</label>
+        <select id="f-area" name="area" required>
+          <option value="">Selecione…</option>
+          <option>Linguagens e suas Tecnologias</option>
+          <option>Matemática e suas Tecnologias</option>
+          <option>Ciências da Natureza e suas Tecnologias</option>
+          <option>Ciências Humanas e suas Tecnologias</option>
+          <option>Arte</option>
+          <option>Educação Física</option>
+          <option>Educação Infantil / Anos Iniciais</option>
+          <option>Gestão / Coordenação Pedagógica</option>
+          <option>Outra / Multidisciplinar</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="f-rede">Rede de ensino *</label>
+        <select id="f-rede" name="rede" required>
+          <option value="">Selecione…</option>
+          <option>Privada</option>
+          <option>Pública — Municipal</option>
+          <option>Pública — Estadual</option>
+          <option>Pública — Federal</option>
+        </select>
+      </div>
+      <div class="form-group full-width">
+        <label class="checkbox-label" for="f-lgpd">
+          <input type="checkbox" id="f-lgpd" name="lgpd" required>
+          <span>Autorizo o tratamento dos meus dados pessoais <strong>exclusivamente para fins educacionais e de pesquisa</strong> deste projeto, conforme a <strong>LGPD (Lei nº 13.709/2018)</strong>. Os dados ficam armazenados apenas neste navegador e no certificado gerado por mim. *</span>
+        </label>
+      </div>
+      <div class="form-group full-width" style="text-align:center">
+        <button type="submit" class="btn">Iniciar Jornada →</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- ETAPA 2 em diante: liberado após identificação -->
+  <div id="conteudo-pos-identificacao" style="display:none">
   <section>
     <h2 style="margin-top:40px">👩‍🏫 Escolha sua Mentora</h2>
-    <p>Personas ilustradas <em>inspiradas</em> na obra de cinco pesquisadoras brasileiras da Educação e Tecnologia — uma homenagem, não uma representação.</p>
+    <p>Personas ilustradas <em>inspiradas</em> na obra de pesquisadores brasileiros da Educação e Tecnologia — uma homenagem, não uma representação.</p>
     <div class="grid5">
       <div class="mentor" data-m="vani" tabindex="0" role="button" aria-pressed="false" aria-label="Selecionar mentora da Ilha 1, inspirada em Vani Moreira Kenski">
         <img src="assets/img/mentora-ilha1.png" alt="Mentora da Ilha 1 — Saberes Digitais Docentes">
@@ -60,7 +113,7 @@
         <span class="tagilha">Ilha 2 · PBL</span>
       </div>
       <div class="mentor" data-m="valente" tabindex="0" role="button" aria-pressed="false" aria-label="Selecionar mentor da Ilha 2, inspirado em José Armando Valente">
-        <div class="emoji" aria-hidden="true">💻</div>
+        <img src="assets/img/mentor-jose-valente.png" alt="Mentor da Ilha 2 — Informática na Educação (inspirado em José Armando Valente)">
         <h3>Guardião da Informática na Educação</h3>
         <p>Inspirado em <strong>José Armando Valente</strong> (Unicamp) — computação e aprendizagem crítica.</p>
         <span class="tagilha">Ilha 2 · PBL</span>
@@ -144,7 +197,9 @@
     <h2>Pronto para zarpar?</h2>
     <p style="margin:10px 0 20px">Cada videoaula vale XP — e suas anotações Cornell ficam salvas no seu caderno digital.</p>
     <a class="btn" href="videoteca.html">🎥 Abrir a videoteca</a>
+    <a class="btn ghost" href="final.html" style="margin-left:10px">🏆 Tela final · Certificado</a>
   </section>
+  </div><!-- /conteudo-pos-identificacao -->
 </main>
 
 <footer>
@@ -152,6 +207,7 @@
   <p>Personas ilustradas inspiradas nas pesquisadoras Vani M. Kenski, Léa Fagundes (in memoriam), Lílian Bacich, José Armando Valente, José Moran, Edméa Santos e Lúcia Santaella — homenagem acadêmica, sem representação de imagem real.</p>
 </footer>
 
+<script src="assets/js/identificacao.js"></script>
 <script src="assets/js/app.js"></script>
 <script>initHome();</script>
 </body>

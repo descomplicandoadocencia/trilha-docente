@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tela Final — Score, Badges e Autoavaliação · Arquiteto da Cultura Digital</title>
+<meta name="description" content="Seu resultado na trilha: XP, badges conquistados, autoavaliação final e envio do certificado em PDF.">
+<meta name="theme-color" content="#0f5257">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<header class="topbar">
+  <a class="brand" href="index.html">🏝️ Arquiteto da Cultura Digital</a>
+  <div class="stats">
+    <span class="xp">⭐ XP: <b data-xp>0</b></span>
+    <span class="hearts" data-hearts>❤️❤️❤️</span>
+    <span>🎯 <b data-progress>0/19</b></span>
+  </div>
+  <nav>
+    <a href="index.html">Mapa</a>
+    <a href="videoteca.html">Videoteca</a>
+    <a href="final.html">🏆 Certificado</a>
+  </nav>
+</header>
+<div class="pbar"><span></span></div>
+
+<main class="wrap" id="conteudo">
+  <section class="score-hero" aria-live="polite">
+    <p style="font-size:.9rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold-l)">Resultado da sua jornada</p>
+    <div class="big" id="scoreXP">0 XP</div>
+    <p class="sub" id="scoreDetalhe">—</p>
+    <p class="sub" id="scoreNivel" style="font-weight:700;margin-top:8px">—</p>
+  </section>
+
+  <section style="margin-top:30px">
+    <h2>🏅 Badges conquistados</h2>
+    <div class="badges" id="finalBadges"></div>
+  </section>
+
+  <section class="final-grid" style="margin-top:34px">
+    <div class="panel">
+      <h2>📋 Seus dados (da identificação)</h2>
+      <div id="identResumo" style="margin-top:10px;font-size:.92rem;line-height:1.8">Carregando…</div>
+      <p class="aviso-legal">🔒 <strong>LGPD:</strong> seus dados permanecem apenas neste navegador (localStorage) e no PDF que você mesmo gera e envia. Nada é transmitido automaticamente a servidores.</p>
+    </div>
+
+    <div class="panel">
+      <h2>🪞 Autoavaliação final</h2>
+      <p style="font-size:.85rem;color:#5b6b72">De 1 (discordo totalmente) a 5 (concordo totalmente):</p>
+      <form id="formAuto" class="likert">
+        <div class="q"><p>1. Hoje consigo planejar aulas com tecnologia de forma intencional (objetivo → estratégia → recurso).</p>
+          <div class="opts" data-q="q1"></div></div>
+        <div class="q"><p>2. Sei como aplicar os 3 eixos da BNCC da Computação na minha disciplina.</p>
+          <div class="opts" data-q="q2"></div></div>
+        <div class="q"><p>3. Consigo desenhar uma aula em rotação por estações equilibrando mídias e ritmos.</p>
+          <div class="opts" data-q="q3"></div></div>
+        <div class="q"><p>4. Sinto-me seguro(a) para usar IA Generativa com verificação de vieses, fontes e ética.</p>
+          <div class="opts" data-q="q4"></div></div>
+        <div class="q"><p>5. Pretendo aplicar com meus alunos o OAD (Interactive Book H5P) do Desafio Final.</p>
+          <div class="opts" data-q="q5"></div></div>
+      </form>
+    </div>
+  </section>
+
+  <section class="panel" style="margin-top:26px;text-align:center">
+    <h2>📄 Certificado + Autoavaliação em PDF</h2>
+    <p style="margin:8px 0 18px">O PDF consolida sua identificação, XP, badges e autoavaliação. Após gerar, clique em enviar — seu cliente de e-mail abrirá endereçado a <strong>descomplicandoadocencia@gmail.com</strong>; anexe o PDF baixado antes de enviar.</p>
+    <button class="btn" id="btnGerar">📄 1. Gerar meu PDF</button>
+    <button class="btn ghost" id="btnEnviar" style="margin-left:10px">📧 2. Enviar para descomplicandoadocencia@gmail.com</button>
+    <p id="pdfStatus" class="autosave" style="margin-top:10px"></p>
+  </section>
+
+  <div class="navfoot">
+    <a class="btn ghost sm" href="index.html">← Voltar ao mapa</a>
+    <div class="next-info">Obrigado por navegar no Arquipélago da Cultura Digital 🌊</div>
+    <a class="btn sm" href="videoteca.html">Revisitar a videoteca</a>
+  </div>
+</main>
+
+<footer>
+  <p><strong>Arquiteto da Cultura Digital</strong> — <a href="https://descomplicandoadocencia.com.br">Descomplicando a Docência</a></p>
+</footer>
+
+<script src="assets/js/app.js"></script>
+<script>
+(function(){
+  const get=(k,d)=>{try{const v=localStorage.getItem('acd_'+k);return v===null?d:JSON.parse(v);}catch(e){return d;}};
+  const xp=get('xp',0), done=get('done',[]), ident=get('ident',null), TOTAL=790;
+  if(!ident){ if(confirm('Você ainda não se identificou. Ir à tela inicial para preencher seus dados?')) location.href='index.html'; }
+
+  // Score
+  document.getElementById('scoreXP').textContent = xp + ' XP';
+  document.getElementById('scoreDetalhe').textContent = done.length + ' de 19 missões concluídas · ' + Math.min(100,Math.round(xp/TOTAL*100)) + '% da trilha';
+  const nivel = done.length>=19 ? '🏆 Arquiteto da Cultura Digital — Trilha completa!' :
+                xp>=520 ? '🤖✨ Nível 4 — Criador Cibercultural' :
+                xp>=340 ? '🧭 Nível 3 — Arquiteto de Experiências' :
+                xp>=130 ? '💻 Nível 2 — Cidadão Computacional' :
+                xp>0    ? '🌱 Nível 1 — Navegante dos Saberes' : '⛵ Jornada ainda não iniciada';
+  document.getElementById('scoreNivel').textContent = nivel;
+
+  // Badges
+  const ISL=[{n:1,min:0,b:'🌱',t:'Navegante dos Saberes'},{n:2,min:130,b:'🤖',t:'Cidadão Computacional'},{n:3,min:340,b:'🧭',t:'Arquiteto de Experiências'},{n:4,min:520,b:'🤖✨',t:'Criador Cibercultural'}];
+  const ids=Object.keys(ISL); // ilhas concluídas via vídeos marcados
+  const mapIlha={}; // conta concluídos por ilha a partir dos ids acd_done (prefixo ilhaN-)
+  done.forEach(id=>{const m=id.match(/^ilha(\d)/); if(m){mapIlha[m[1]]=(mapIlha[m[1]]||0)+1;}});
+  const totalPorIlha={1:3,2:5,3:4,4:7};
+  let html='';
+  ISL.forEach(i=>{
+    const ok=(mapIlha[i.n]||0)>=totalPorIlha[i.n];
+    html+=`<div class="badge ${ok?'':'locked'}"><div class="ico">${i.b}</div><h3>${i.t}</h3><p>Ilha ${i.n} · ${mapIlha[i.n]||0}/${totalPorIlha[i.n]} missões</p></div>`;
+  });
+  const fin=done.length>=19;
+  html+=`<div class="badge ${fin?'':'locked'}"><div class="ico">🏆</div><h3>Arquiteto da Cultura Digital</h3><p>Concluir toda a trilha</p></div>`;
+  document.getElementById('finalBadges').innerHTML=html;
+
+  // Resumo identificação
+  document.getElementById('identResumo').innerHTML = ident ?
+    `<strong>${ident.nome}</strong><br>📧 ${ident.email}<br>📚 ${ident.area}<br>🏫 Rede: ${ident.rede}<br>✅ LGPD aceito em ${new Date(ident.timestamp).toLocaleDateString('pt-BR')}` :
+    '⚠️ Não identificado(a). <a href="index.html">Preencher agora</a>.';
+
+  // Likert 1-5
+  document.querySelectorAll('.likert .opts').forEach(box=>{
+    const name=box.dataset.q;
+    box.innerHTML=[1,2,3,4,5].map(v=>`<label><input type="radio" name="${name}" value="${v}"> ${v}</label>`).join('');
+  });
+
+  function respostas(){
+    const r={}; let faltam=0;
+    ['q1','q2','q3','q4','q5'].forEach(q=>{const el=document.querySelector(`input[name=${q}]:checked`); r[q]=el?+el.value:null; if(!el)faltam++;});
+    return {r,faltam};
+  }
+
+  function montarHTML(){
+    const {r}=respostas();
+    const d=new Date().toLocaleDateString('pt-BR');
+    const perguntas=['Planejar aulas com tecnologia de forma intencional','Aplicar os 3 eixos da BNCC Computação','Desenhar rotação por estações equilibrada','Usar IAG com verificação ética','Aplicar o OAD do Desafio Final com meus alunos'];
+    const linhas=['q1','q2','q3','q4','q5'].map((q,i)=>`<tr><td style="padding:6px;border:1px solid #ccc">${perguntas[i]}</td><td style="padding:6px;border:1px solid #ccc;text-align:center"><strong>${r[q]??'—'}</strong>/5</td></tr>`).join('');
+    return `<div style="font-family:Arial,sans-serif;padding:26px;color:#233038">
+      <h1 style="font-size:20px;color:#0f5257;margin:0">🏆 Arquiteto da Cultura Digital</h1>
+      <p style="font-size:12px;color:#666;margin:4px 0 16px">Certificado de jornada + autoavaliação · Trilha Gamificada de Capacitação Docente · ${d}</p>
+      <h2 style="font-size:14px;color:#1d7a80;border-bottom:2px solid #c9a24b;padding-bottom:4px">Identificação</h2>
+      <p style="font-size:12px;line-height:1.7"><strong>${ident?ident.nome:'—'}</strong><br>E-mail: ${ident?ident.email:'—'}<br>Área: ${ident?ident.area:'—'}<br>Rede: ${ident?ident.rede:'—'}</p>
+      <h2 style="font-size:14px;color:#1d7a80;border-bottom:2px solid #c9a24b;padding-bottom:4px">Resultado</h2>
+      <p style="font-size:12px">XP: <strong>${xp}/${TOTAL}</strong> · Missões: <strong>${done.length}/19</strong> · Nível: <strong>${nivel}</strong></p>
+      <h2 style="font-size:14px;color:#1d7a80;border-bottom:2px solid #c9a24b;padding-bottom:4px">Autoavaliação (1–5)</h2>
+      <table style="border-collapse:collapse;width:100%;font-size:11px">${linhas}</table>
+      <p style="font-size:10px;color:#666;margin-top:16px">Documento gerado pelo próprio participante. Dados tratados conforme LGPD (Lei 13.709/2018) exclusivamente para fins educacionais e de pesquisa do projeto Descomplicando a Docência.</p></div>`;
+  }
+
+  document.getElementById('btnGerar').addEventListener('click',()=>{
+    const {faltam}=respostas();
+    if(faltam>0 && !confirm(`Você deixou ${faltam} questão(ões) da autoavaliação sem resposta. Gerar mesmo assim?`)) return;
+    const holder=document.createElement('div'); holder.innerHTML=montarHTML(); document.body.appendChild(holder);
+    html2pdf().set({margin:10,filename:'certificado-arquiteto-cultura-digital.pdf',html2canvas:{scale:2},jsPDF:{unit:'mm',format:'a4'}})
+      .from(holder).save().then(()=>{holder.remove();document.getElementById('pdfStatus').textContent='✔ PDF gerado e baixado. Agora clique em "2. Enviar".';});
+  });
+
+  document.getElementById('btnEnviar').addEventListener('click',()=>{
+    const nome=ident?ident.nome:'Participante';
+    const assunto=encodeURIComponent('Certificado — Arquiteto da Cultura Digital — '+nome);
+    const corpo=encodeURIComponent(
+`Olá, equipe Descomplicando a Docência!
+
+Segue em anexo o meu certificado e autoavaliação da trilha "Arquiteto da Cultura Digital".
+
+Nome: ${ident?ident.nome:'—'}
+E-mail institucional: ${ident?ident.email:'—'}
+Área de atuação: ${ident?ident.area:'—'}
+Rede de ensino: ${ident?ident.rede:'—'}
+XP final: ${xp}/${TOTAL} · Missões: ${done.length}/19
+Nível alcançado: ${nivel}
+
+IMPORTANTE: anexe a este e-mail o arquivo "certificado-arquiteto-cultura-digital.pdf" que você acabou de baixar (botão "1. Gerar meu PDF").
+
+Autorizo o tratamento destes dados para fins educacionais e de pesquisa, conforme LGPD (Lei 13.709/2018).
+
+Atenciosamente,
+${nome}`);
+    window.location.href=`mailto:descomplicandoadocencia@gmail.com?subject=${assunto}&body=${corpo}`;
+    document.getElementById('pdfStatus').textContent='📧 Seu cliente de e-mail foi aberto. Não esqueça de ANEXAR o PDF gerado antes de enviar.';
+  });
+
+  renderStats();
+})();
+</script>
+</body>
+</html>
