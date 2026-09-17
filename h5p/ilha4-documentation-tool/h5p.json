@@ -1,0 +1,21 @@
+{
+  "title": "Ilha 4 (parte 2) — Plano de Aula coautado com IAG",
+  "language": "pt-BR",
+  "description": "Documentation Tool que gera plano de aula em coautoria com IA Generativa, anexando automaticamente uma Declaração de Uso Ético da IAG assinada digitalmente pelo professor.",
+  "embedTypes": [
+    "iframe"
+  ],
+  "license": "U",
+  "preloadedDependencies": [
+    {
+      "machineName": "H5P.DocumentationTool",
+      "majorVersion": 1,
+      "minorVersion": 8
+    },
+    {
+      "machineName": "H5P.Text",
+      "majorVersion": 1,
+      "minorVersion": 1
+    }
+  ]
+}

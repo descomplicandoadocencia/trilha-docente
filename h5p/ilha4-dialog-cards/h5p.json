@@ -1,0 +1,10 @@
+{
+  "title": "Ilha 4 — Dialog Cards: Prompts de IAG × Análise Crítica",
+  "language": "pt-BR",
+  "description": "10 cartões de memorização e reflexão. Frente: prompt de IAG pronto para usar. Verso: análise crítica sobre vieses, alucinações e caminhos de mitigação.",
+  "embedTypes": ["iframe"],
+  "license": "U",
+  "preloadedDependencies": [
+    { "machineName": "H5P.Dialogcards", "majorVersion": 1, "minorVersion": 9 }
+  ]
+}

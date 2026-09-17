@@ -1,0 +1,46 @@
+{
+  "title": "Plano de Aula coautado com IAG + Declaração de Uso Ético",
+  "fields": [
+    { "label": "Identificação da aula (Disciplina · Ano · Duração · Escola)", "required": true, "type": "text", "placeholder": "Língua Portuguesa · 7º ano · 50 min · EM Beira-Rio" },
+    { "label": "Habilidade BNCC em foco (código)", "required": true, "type": "text", "placeholder": "(EF07LP01)" },
+    { "label": "Objetivo de aprendizagem (o aluno será capaz de…)", "required": true, "type": "text", "placeholder": "Identificar Fake News em mensagens de WhatsApp" },
+    { "label": "Modelo H5P escolhido", "required": true, "type": "select", "options": [
+      { "label": "Interactive Video", "value": "interactive-video" },
+      { "label": "Course Presentation", "value": "course-presentation" },
+      { "label": "Branching Scenario", "value": "branching-scenario" },
+      { "label": "Dialog Cards", "value": "dialog-cards" },
+      { "label": "Documentation Tool", "value": "documentation-tool" },
+      { "label": "Drag and Drop", "value": "drag-and-drop" },
+      { "label": "Interactive Book", "value": "interactive-book" }
+    ] },
+    { "label": "Ferramenta de IA Generativa e versão", "required": true, "type": "text", "placeholder": "ChatGPT 4o / Gemini Flash 2.5 / Claude Sonnet 4 / Outro" },
+    { "label": "Prompt completo enviado à IAG", "required": true, "type": "textarea", "placeholder": "Cole aqui exatamente o prompt enviado. Sem edições para preservar rastreabilidade." },
+    { "label": "Saída gerada pela IAG (resumido ou trecho reduzido)", "required": false, "type": "textarea", "placeholder": "Cole aqui o trecho da resposta da IAG que efetivamente será usado em sala." },
+    { "label": "O que foi revisto pelo professor e por quê", "required": true, "type": "textarea", "placeholder": "Descreva o que foi alterado, excluído ou acrescido em relação ao que a IA sugeriu. Justifique cada decisão." },
+    { "label": "Verificações éticas realizadas", "required": true, "type": "checkbox-group", "options": [
+      { "label": "Viés (de gênero, raça, território, geração) analisado e mitigado", "value": "vies" },
+      { "label": "Fontes e citações confirmadas em fontes oficiais/independentes", "value": "fontes" },
+      { "label": "Direitos autorais preservados (CC-BY, domínio público, citação)", "value": "autoral" },
+      { "label": "LGPD: não há dados pessoais não consentidos de menores", "value": "lgpd" },
+      { "label": "Inclusão e acessibilidade consideradas (Libras, alto contraste, alt-text)", "value": "inclusao" }
+    ] },
+    { "label": "Parecer pessoal — a IAG ajudou, mas não substitui", "required": true, "type": "scale", "min": 0, "max": 5, "labelLabel": "Em uma escala de 0 a 5, quanto a IA contribuiu para acelerar o plano? (0 = só ferramenta de apoio; 5 = acelerou toda a primeira versão)" }
+  ],
+  "exportFormat": "html",
+  "l10n": {
+    "title": "Gerador de Plano de Aula coautado com IAG",
+    "subtitle": "Arquipélago do Saber Digital · Ilha 4 — O Criador Cibercultural",
+    "saveLabel": "Exportar plano + Declaração",
+    "exportDescription": "Ao exportar, será gerado um documento HTML com o plano de aula completo e a Declaração de Uso Ético da IAG."
+  },
+  "postSaveTemplate": "<h1 style='color:#0f5257'>Plano de Aula coautado com IAG</h1><p><strong>Projeto:</strong> Arquiteto da Cultura Digital · <strong>Docente:</strong> {{professor}} · <strong>Data:</strong> {{data}}</p><hr/><h2>Plano</h2>{{content}}<hr/><h2>📜 Declaração de Uso Ético da IAG</h2><p>Eu, <strong>{{professor}}</strong>, docente da <strong>{{escola}}</strong>, declaro que o plano de aula acima foi <em>coautorado</em> com uma ferramenta de Inteligência Artificial Generativa ({{ferramenta}}). O conteúdo foi por mim revisado, adaptado ao contexto da turma e verificado quanto a viés, fontes verificáveis, direitos autorais, LGPD e inclusão. As decisões pedagógicas finais são de minha inteira responsabilidade.</p><p><em>Local e data:</em> {{local_data}}</p><p><em>Assinatura digital:</em> <code>{{hash}}</code></p>",
+  "placeholders": {
+    "professor": "{{professor}}",
+    "escola": "{{escola}}",
+    "data": "{{data}}",
+    "ferramenta": "{{ferramenta}}",
+    "local_data": "{{local_data}}",
+    "hash": "{{hash}}"
+  },
+  "printTemplate": "<div style='font-family:Arial;padding:24px'><h1 style='color:#0f5257'>Plano de Aula coautado com IAG</h1>{{content}}<hr/><h2>📜 Declaração de Uso Ético da IAG</h2><p>Eu, <strong>{{professor}}</strong>, docente da <strong>{{escola}}</strong>, declaro que o plano de aula acima foi coautorado com uma ferramenta de IA Generativa ({{ferramenta}}). Revisei, adaptei ao contexto da turma e verifiquei viés, fontes, direitos autorais, LGPD e inclusão. As decisões pedagógicas finais são de minha inteira responsabilidade.</p></div>"
+}

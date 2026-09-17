@@ -1,0 +1,180 @@
+{
+  "startNode": "n1",
+  "randomBranching": false,
+  "forceLinear": false,
+  "alternativeStartNode": null,
+  "scoring": { "score": { "type": "plain-text", "range": { "min": 0, "max": 4 } } },
+  "titleSlides": {
+    "title": "O Cidadão Computacional",
+    "subtitle": "Projeto Sustentável Interdisciplinar — 3 aulas de 50 min",
+    "description": "Escolha caminhos pedagógicos para um projeto sobre lixo escolar com robótica de sucata e programação desplugada."
+  },
+  "endScenes": [
+    {
+      "id": "end-arquiteto",
+      "type": "summary",
+      "title": "🏆 Arquiteto Cidadão",
+      "text": "<strong>Caminho recomendado:</strong> Começou pelos dados do lixo da escola, mas priorizou a decomposição do problema antes (Pensamento Computacional). Usou LEGO/Zoobot (prototipagem mecânica), organizou a turma por papéis (Pesquisador, Programador, Comunicador) e fechou com uma rubrica detalhada por papel. Cultura Digital em alta, com avaliação formativa sólida."
+    },
+    {
+      "id": "end-maker",
+      "type": "summary",
+      "title": "🛠️ Maker Criativo",
+      "text": "<strong>Mundo Digital em segundo plano, Maker no centro:</strong> Você foi direto à prototipagem mecânica, manteve papéis definidos e terminou com apresentação pública. <em>Próximo passo:</em> introduza uma folha de cálculo simples para que cada equipe registre os dados do protótipo."
+    },
+    {
+      "id": "end-tecnico",
+      "type": "summary",
+      "title": "📊 Técnico do Mundo Digital",
+      "text": "<strong>Foco em dados:</strong> optou por estatística do lixo e planilha como ponto de partida. Recomendação: insira ao menos 1 estação desplugada (mapa de fluxo em papel pardo) para garantir que o aluno conecte o dado à sua representação algorítmica."
+    },
+    {
+      "id": "end-reflexivo",
+      "type": "summary",
+      "title": "🪞 Professor Reflexivo",
+      "text": "<strong>Reconhecimento da Cultura Digital:</strong> Você terminou o cenário consciente de que Cultura Digital foi transversal, mesmo quando não foi a sua escolha prioritária. <em>Próximo passo:</em> explicite esse aprendizado aos alunos — registre em Cornell Notes."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "n1",
+      "title": "Como abrir o projeto?",
+      "type": "choice",
+      "content": {
+        "library": "H5P.Text 1.1",
+        "params": { "text": "<strong>Contexto:</strong> A Escola Municipal Beira-Rio organizou um grêmio estudantil ambiental do 7º ano. Eles querem reduzir o lixo escolar com robótica de sucata e programação desplugada. Você acompanha três aulas de 50 min. <br><br><em>Escolha por onde começar.</em>" }
+      },
+      "choices": [
+        { "nextNodeId": "n2", "text": "A. Começo pela estatística do lixo na escola", "feedback": "Forte no Mundo Digital, fraco no Pensamento Computacional." },
+        { "nextNodeId": "n3", "text": "B. Começo por histórias do bairro", "feedback": "Empatia alta, mas Tecnologia fica para depois." },
+        { "nextNodeId": "n4", "text": "C. Começo pela decomposição: 'O que é lixo?'", "feedback": "✅ Pensamento Computacional em primeiro lugar." }
+      ]
+    },
+    {
+      "id": "n2",
+      "title": "Recurso desplugado",
+      "content": { "library": "H5P.Text 1.1", "params": { "text": "Você abriu com estatística. Que material oferece aos alunos?" } },
+      "choices": [
+        { "nextNodeId": "n7", "text": "Mapa de fluxo em papel pardo", "feedback": "Algoritmo explícito." },
+        { "nextNodeId": "n8", "text": "Geoboard como protetor de cabine", "feedback": "Abstração espacial, requer mediação." },
+        { "nextNodeId": "n9", "text": "LEGO/Zoobot para protótipo mecânico", "feedback": "Robótica acessível." }
+      ]
+    },
+    {
+      "id": "n3",
+      "title": "Recurso desplugado",
+      "content": { "library": "H5P.Text 1.1", "params": { "text": "Histórias vieram primeiro. Agora precise do objeto concreto." } },
+      "choices": [
+        { "nextNodeId": "n10", "text": "Mapa de fluxo em papel pardo", "feedback": "Bom — a história vira algoritmo." },
+        { "nextNodeId": "n11", "text": "Geoboard como protetor de cabine", "feedback": "Mais difícil sem organização prévia." },
+        { "nextNodeId": "n12", "text": "LEGO/Zoobot para protótipo mecânico", "feedback": "Eficiente, se você mediar o contexto." }
+      ]
+    },
+    {
+      "id": "n4",
+      "title": "Recurso desplugado",
+      "content": { "library": "H5P.Text 1.1", "params": { "text": "Decomposição chegou primeiro. Agora organize o fazer." } },
+      "choices": [
+        { "nextNodeId": "n13", "text": "Mapa de fluxo em papel pardo", "feedback": "Excelente — algoritmo explícito." },
+        { "nextNodeId": "n14", "text": "Geoboard como protetor de cabine", "feedback": "Caminho alternativo." },
+        { "nextNodeId": "n15", "text": "LEGO/Zoobot para protótipo mecânico", "feedback": "Modelo físico do algoritmo." }
+      ]
+    },
+    {
+      "id": "n7", "title": "Como envolver a turma?",
+      "content": { "library": "H5P.Text 1.1", "params": { "text": "Você usou mapa de fluxo em papel. Como organiza a turma?" } },
+      "choices": [
+        { "nextNodeId": "n16-avaliacao", "text": "Todos em grupos iguais", "feedback": "Inclusão, ritmo lento." },
+        { "nextNodeId": "n17-avaliacao", "text": "Duplas por afinidade", "feedback": "Engajamento, menor diversidade." },
+        { "nextNodeId": "n18-avaliacao", "text": "Equipes por papéis", "feedback": "✅ Cultura Digital forte." }
+      ]
+    },
+    {
+      "id": "n8", "title": "Como envolver a turma?",
+      "content": { "library": "H5P.Text 1.1", "params": { "text": "Geoboard no centro — como divide a turma?" } },
+      "choices": [
+        { "nextNodeId": "n16-avaliacao", "text": "Todos em grupos iguais", "feedback": "Simples, eficiente." },
+        { "nextNodeId": "n17-avaliacao", "text": "Duplas por afinidade", "feedback": "Motivador." },
+        { "nextNodeId": "n18-avaliacao", "text": "Equipes por papéis", "feedback": "Ideal se o tempo permite." }
+      ]
+    },
+    {
+      "id": "n9", "title": "Como envolver a turma?",
+      "content": { "library": "H5P.Text 1.1", "params": { "text": "LEGO no centro. Como organiza?" } },
+      "choices": [
+        { "nextNodeId": "n16-avaliacao", "text": "Todos em grupos iguais", "feedback": "Manualidade colaborativa." },
+        { "nextNodeId": "n17-avaliacao", "text": "Duplas por afinidade", "feedback": "Funcional." },
+        { "nextNodeId": "n18-avaliacao", "text": "Equipes por papéis", "feedback": "Excelente — combina prototipagem e comunicação." }
+      ]
+    },
+    { "id": "n10", "title": "Como envolver a turma?", "content": { "library": "H5P.Text 1.1", "params": { "text": "Mapa de fluxo em papel com história de bairro." } },
+      "choices": [
+        { "nextNodeId": "n16-avaliacao", "text": "Todos em grupos iguais", "feedback": "Funciona bem." },
+        { "nextNodeId": "n17-avaliacao", "text": "Duplas por afinidade", "feedback": "Motivador." },
+        { "nextNodeId": "n18-avaliacao", "text": "Equipes por papéis", "feedback": "Excelente — combina contexto e responsabilidade." }
+      ]
+    },
+    { "id": "n11", "title": "Como envolver a turma?", "content": { "library": "H5P.Text 1.1", "params": { "text": "Geoboard exige adaptação." } },
+      "choices": [
+        { "nextNodeId": "n16-avaliacao", "text": "Todos em grupos iguais", "feedback": "Mediação mais necessária." },
+        { "nextNodeId": "n17-avaliacao", "text": "Duplas por afinidade", "feedback": "Mediação dupla." },
+        { "nextNodeId": "n18-avaliacao", "text": "Equipes por papéis", "feedback": "Complexo para 3 aulas." }
+      ]
+    },
+    { "id": "n12", "title": "Como envolver a turma?", "content": { "library": "H5P.Text 1.1", "params": { "text": "LEGO com contexto de bairro." } },
+      "choices": [
+        { "nextNodeId": "n16-avaliacao", "text": "Todos em grupos iguais", "feedback": "Cooperação equilibrada." },
+        { "nextNodeId": "n17-avaliacao", "text": "Duplas por afinidade", "feedback": "Foco no protótipo." },
+        { "nextNodeId": "n18-avaliacao", "text": "Equipes por papéis", "feedback": "Comunicação fica explícita." }
+      ]
+    },
+    { "id": "n13", "title": "Como envolver a turma?", "content": { "library": "H5P.Text 1.1", "params": { "text": "Decomposição + papel pardo." } },
+      "choices": [
+        { "nextNodeId": "n16-avaliacao", "text": "Todos em grupos iguais", "feedback": "Eficiente." },
+        { "nextNodeId": "n17-avaliacao", "text": "Duplas por afinidade", "feedback": "Funcional." },
+        { "nextNodeId": "n18-avaliacao", "text": "Equipes por papéis", "feedback": "✅ Recomendação forte." }
+      ]
+    },
+    { "id": "n14", "title": "Como envolver a turma?", "content": { "library": "H5P.Text 1.1", "params": { "text": "Decomposição + Geoboard." } },
+      "choices": [
+        { "nextNodeId": "n16-avaliacao", "text": "Todos em grupos iguais", "feedback": "Necessita mediação." },
+        { "nextNodeId": "n17-avaliacao", "text": "Duplas por afinidade", "feedback": "Flexível." },
+        { "nextNodeId": "n18-avaliacao", "text": "Equipes por papéis", "feedback": "Risco: tempo curto." }
+      ]
+    },
+    { "id": "n15", "title": "Como envolver a turma?", "content": { "library": "H5P.Text 1.1", "params": { "text": "Decomposição + LEGO." } },
+      "choices": [
+        { "nextNodeId": "n16-avaliacao", "text": "Todos em grupos iguais", "feedback": "Funcional." },
+        { "nextNodeId": "n17-avaliacao", "text": "Duplas por afinidade", "feedback": "Eficaz para protótipo." },
+        { "nextNodeId": "n18-avaliacao", "text": "Equipes por papéis", "feedback": "Alinhamento ideal." }
+      ]
+    },
+    {
+      "id": "n16-avaliacao", "title": "Como avaliar?",
+      "content": { "library": "H5P.Text 1.1", "params": { "text": "Grupos iguais constituídos. Como avaliar?" } },
+      "choices": [
+        { "nextNodeId": "end-tecnico", "text": "A. Prova individual", "feedback": "Tradicional; perde cooperação." },
+        { "nextNodeId": "end-tecnico", "text": "B. Rubrica por papel", "feedback": "✅ Processo visível." },
+        { "nextNodeId": "end-maker", "text": "C. Apresentação pública", "feedback": "Cultura Digital em alta." }
+      ]
+    },
+    {
+      "id": "n17-avaliacao", "title": "Como avaliar?",
+      "content": { "library": "H5P.Text 1.1", "params": { "text": "Duplas por afinidade. Como avaliar?" } },
+      "choices": [
+        { "nextNodeId": "end-tecnico", "text": "A. Prova individual", "feedback": "Contradiz o modelo." },
+        { "nextNodeId": "end-maker", "text": "B. Rubrica por papel", "feedback": "Equilibra processo e produto." },
+        { "nextNodeId": "end-maker", "text": "C. Apresentação pública", "feedback": "Cultura Digital alta." }
+      ]
+    },
+    {
+      "id": "n18-avaliacao", "title": "Como avaliar?",
+      "content": { "library": "H5P.Text 1.1", "params": { "text": "Equipes com papéis. Como avaliar?" } },
+      "choices": [
+        { "nextNodeId": "end-arquiteto", "text": "A. Prova individual", "feedback": "Não recomendado." },
+        { "nextNodeId": "end-arquiteto", "text": "B. Rubrica por papel", "feedback": "✅ Arquiteto Cidadão." },
+        { "nextNodeId": "end-maker", "text": "C. Apresentação pública", "feedback": "Excelente desfecho público." }
+      ]
+    }
+  ]
+}

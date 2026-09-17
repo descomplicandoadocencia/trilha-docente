@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sala de Aula — Arquiteto da Cultura Digital</title>
+<meta name="description" content="Videoaula em destaque com Cornell Notes (pistas, anotações, síntese), exportação em PDF e atividade H5P.">
+<meta name="theme-color" content="#0f5257">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<header class="topbar">
+  <a class="brand" href="index.html">🏝️ Arquiteto da Cultura Digital</a>
+  <div class="stats">
+    <span class="xp">⭐ XP: <b data-xp>0</b></span>
+    <span class="hearts" data-hearts>❤️❤️❤️</span>
+    <span>🎯 <b data-progress>0/19</b></span>
+  </div>
+  <nav>
+    <a href="index.html">Mapa</a>
+    <a href="videoteca.html">Videoteca</a>
+  </nav>
+</header>
+<div class="pbar"><span></span></div>
+
+<main class="wrap" id="conteudo">
+  <div class="backbar"><a href="videoteca.html">← Voltar à videoteca</a></div>
+
+  <div class="aula-grid">
+    <section class="player-box" aria-label="Vídeo em destaque">
+      <div class="player">
+        <iframe id="vFrame" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="info">
+        <h1 id="vTitle">Carregando…</h1>
+        <div class="meta" id="vMeta"></div>
+      </div>
+      <div class="h5p-block" id="h5pBlock" style="display:none"></div>
+    </section>
+
+    <aside class="cornell" aria-label="Cornell Notes">
+      <h2>📝 Cornell Notes</h2>
+      <div>
+        <label for="cPistas">🔑 Pistas / palavras-chave</label>
+        <textarea id="cPistas" rows="3" placeholder="Conceitos-chave, dúvidas, termos…"></textarea>
+      </div>
+      <div>
+        <label for="cAnot">📒 Anotações</label>
+        <textarea id="cAnot" rows="8" placeholder="Suas anotações durante o vídeo…"></textarea>
+      </div>
+      <div>
+        <label for="cSint">💡 Síntese</label>
+        <textarea id="cSint" rows="3" placeholder="Em 2-3 frases: o que aprendi e como aplicarei…"></textarea>
+      </div>
+      <div class="row">
+        <button class="btn sm" id="btnPDF">📄 Baixar PDF</button>
+        <button class="btn ghost sm" id="btnLimpar">🗑️ Limpar</button>
+      </div>
+      <span class="autosave" id="autosave">As anotações são salvas automaticamente neste navegador.</span>
+      <button class="btn complete" id="btnConcluir">✔ Marcar como concluído</button>
+    </aside>
+  </div>
+
+  <nav class="navfoot" id="navfoot"></nav>
+</main>
+
+<footer>
+  <p><strong>Arquiteto da Cultura Digital</strong> — <a href="https://descomplicandoadocencia.com.br">Descomplicando a Docência</a></p>
+</footer>
+
+<script src="assets/js/app.js"></script>
+<script>initAula();</script>
+</body>
+</html>

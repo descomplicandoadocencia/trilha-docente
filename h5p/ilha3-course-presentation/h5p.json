@@ -1,0 +1,31 @@
+{
+  "title": "Ilha 3 — Metodologias Ativas e Ensino Híbrido (Course Presentation)",
+  "language": "pt-BR",
+  "description": "Course Presentation em 10 slides + atividade Drag and Drop de planejamento de estação. Slide 8 dispara o componente interativo.",
+  "embedTypes": [
+    "iframe"
+  ],
+  "license": "U",
+  "preloadedDependencies": [
+    {
+      "machineName": "H5P.CoursePresentation",
+      "majorVersion": 1,
+      "minorVersion": 27
+    },
+    {
+      "machineName": "H5P.DragQuestion",
+      "majorVersion": 1,
+      "minorVersion": 15
+    },
+    {
+      "machineName": "H5P.MultiChoice",
+      "majorVersion": 1,
+      "minorVersion": 16
+    },
+    {
+      "machineName": "H5P.Text",
+      "majorVersion": 1,
+      "minorVersion": 1
+    }
+  ]
+}

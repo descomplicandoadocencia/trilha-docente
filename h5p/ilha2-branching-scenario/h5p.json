@@ -1,0 +1,26 @@
+{
+  "title": "Ilha 2 — Projeto Sustentável Interdisciplinar (PBL)",
+  "language": "pt-BR",
+  "description": "Cenário ramificado em 4 nós de decisão para a construção de um projeto PBL interdisciplinar sobre redução de lixo na escola, articulando Pensamento Computacional, Mundo Digital e Cultura Digital.",
+  "embedTypes": [
+    "iframe"
+  ],
+  "license": "U",
+  "preloadedDependencies": [
+    {
+      "machineName": "H5P.BranchingScenario",
+      "majorVersion": 1,
+      "minorVersion": 11
+    },
+    {
+      "machineName": "H5P.Text",
+      "majorVersion": 1,
+      "minorVersion": 1
+    },
+    {
+      "machineName": "H5P.Summary",
+      "majorVersion": 1,
+      "minorVersion": 10
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "title": "Prompts de IAG × Análise crítica",
+  "dialogs": [
+    ["\"Escreva um texto sobre imigração venezuelana em Roraima.\"", "<strong>Risco:</strong> generalização e redução ao quantitativo. <br><strong>Mitigação:</strong> pedir à IAG que use fontes oficiais (ACNUR, IBGE) e citar 3 histórias individuais. <br><strong>Pergunta ao professor:</strong> que vozes aparecem no texto gerado? Quem ficou fora?"],
+    ["\"Crie 10 questões de matemática para o 5º ano.\"", "<strong>Risco:</strong> questões frequentemente fora da BNCC e sem nível cognitivo definido. <br><strong>Mitigação:</strong> adicionar — \"alinhadas às habilidades EF05MA12 e EF05MA13, com 3 níveis de dificuldade (baixa, média, alta)\". <br><strong>Pergunta ao professor:</strong> o que mudou com prompt mais específico?"],
+    ["\"Resuma este artigo científico.\"", "<strong>Risco:</strong> alucinações em citações. <br><strong>Mitigação:</strong> comparar com o original; nunca publicar sem leitura humana. <br><strong>Pergunta ao professor:</strong> todas as citações conferem na fonte original?"],
+    ["\"Faça um plano de aula sobre queimadas na Amazônia.\"", "<strong>Risco:</strong> romantização ou culpabilização dos povos indígenas. <br><strong>Mitigação:</strong> incluir no prompt \"vozes de pesquisadores da região Norte, evitando estereótipos\". <br><strong>Pergunta ao professor:</strong> quais sujeitos aparecem no plano?"],
+    ["\"Crie uma imagem de uma cientista brasileira.\"", "<strong>Risco:</strong> padrão branco-eurocêntrico por causa dos dados de treinamento. <br><strong>Mitigação:</strong> citar 3 cientistas negras/indígenas na prompt; revisar a saída. <br><strong>Pergunta ao professor:</strong> a imagem reflete a diversidade das ciências no Brasil?"],
+    ["\"Traduza este texto para Libras.\"", "<strong>Risco:</strong> IAG <em>não</em> traduz para Libras; gera sequência de imagens sem valor linguístico real. <br><strong>Mitigação:</strong> usar dicionários/glossários oficiais (INES/INESB) e intérprete humano. <br><strong>Pergunta ao professor:</strong> o aluno surdo teve acesso real ao conteúdo?"],
+    ["\"Crie um quiz sobre bullying.\"", "<strong>Risco:</strong> conteúdo superficial sem Q.I. socioemocional. <br><strong>Mitigação:</strong> pedir casos contextualizados, incluir questões de empatia, identificar papéis e consequências. <br><strong>Pergunta ao professor:</strong> o quiz ressoa com a realidade dos alunos?"],
+    ["\"Gere código Python que resolva equações do 9º ano.\"", "<strong>Risco:</strong> substituir o raciocínio do aluno. <br><strong>Mitigação:</strong> discutir o algoritmo em sala — o aluno deve raciocinar, não só executar. <br><strong>Pergunta ao professor:</strong> o aluno consegue ler e modificar o código gerado?"],
+    ["\"Qual é a história da computação no Brasil?\"", "<strong>Risco:</strong> invisibilidade de mulheres, negros e indígenas. <br><strong>Mitigação:</strong> forçar inclusão — \"inclua Hedy Lamarr, Ada Lovelace, Léa Fagundes e Claudio Santos na resposta\". <br><strong>Pergunta ao professor:</strong> o texto saiu da invisibilidade ou repetiu o padrão?"],
+    ["\"Escreva um e-mail aos pais dos alunos.\"", "<strong>Risco:</strong> tom artificial que soa frio e gera ruído. <br><strong>Mitigação:</strong> revisar com postura afetiva real; incluir nome, turma e data específica. <br><strong>Pergunta ao professor:</strong> o e-mail abriria diálogo com a família na vida real?"]
+  ],
+  "behaviour": {
+    "randomCards": true,
+    "scaleTextNotCard": true,
+    "title": "Cartão",
+    "description": "Toque para virar",
+    "next": "Próximo",
+    "previous": "Anterior",
+    "confirm": "Concluído"
+  }
+}

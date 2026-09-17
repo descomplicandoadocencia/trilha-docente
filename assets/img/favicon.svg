@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#0f5257"/>
+  <ellipse cx="32" cy="40" rx="22" ry="12" fill="#f4ead2" stroke="#c9a24b" stroke-width="2"/>
+  <text x="32" y="38" font-size="20" text-anchor="middle">🏝️</text>
+  <path d="M12 52 q5 -4 10 0 t10 0 t10 0 t10 0" stroke="#7fbec2" stroke-width="3" fill="none" stroke-linecap="round"/>
+</svg>

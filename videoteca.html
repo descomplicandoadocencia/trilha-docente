@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Videoteca — Arquiteto da Cultura Digital</title>
+<meta name="description" content="19 videoaulas triadas por pilar: Saberes Digitais, BNCC Computação, Metodologias Ativas e IA Generativa ética.">
+<meta property="og:title" content="Videoteca — Arquiteto da Cultura Digital">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta name="theme-color" content="#0f5257">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#cards">Pular para a lista de vídeos</a>
+<header class="topbar">
+  <a class="brand" href="index.html">🏝️ Arquiteto da Cultura Digital</a>
+  <div class="stats">
+    <span class="xp">⭐ XP: <b data-xp>0</b></span>
+    <span class="hearts" data-hearts>❤️❤️❤️</span>
+    <span>🎯 <b data-progress>0/19</b></span>
+  </div>
+  <nav>
+    <a href="index.html">Mapa</a>
+    <a href="videoteca.html">Videoteca</a>
+  </nav>
+</header>
+<div class="pbar"><span></span></div>
+
+<main class="wrap" id="conteudo">
+  <h1 style="margin-top:34px">🎥 Videoteca da Trilha</h1>
+  <p>Cada vídeo abre a <strong>Sala de Aula</strong>: player em destaque + Cornell Notes ao lado, com salvamento automático e exportação em PDF. Filtre por ilha:</p>
+  <div class="filters">
+    <button class="chip on" data-f="0" aria-pressed="true">🌊 Todas as ilhas</button>
+    <button class="chip" data-f="1">🏝️ Ilha 1 · Saberes Digitais</button>
+    <button class="chip" data-f="2">💻 Ilha 2 · BNCC Computação</button>
+    <button class="chip" data-f="3">🧭 Ilha 3 · Metodologias Ativas</button>
+    <button class="chip" data-f="4">🤖 Ilha 4 · IAG + H5P</button>
+  </div>
+  <div class="cards" id="cards"></div>
+</main>
+
+<footer>
+  <p><strong>Arquiteto da Cultura Digital</strong> — <a href="https://descomplicandoadocencia.com.br">Descomplicando a Docência</a></p>
+</footer>
+
+<script src="assets/js/app.js"></script>
+<script>initVideoteca();</script>
+</body>
+</html>

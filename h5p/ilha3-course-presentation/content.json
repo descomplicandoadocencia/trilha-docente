@@ -1,0 +1,95 @@
+{
+  "title": "Metodologias Ativas e Ensino Híbrido",
+  "presentation": {
+    "slides": [
+      {
+        "elements": [
+          { "x": 5, "y": 5, "width": 80, "height": 20, "action": { "library": "H5P.Text 1.1", "params": { "text": "<h2 style='color:#0f5257'>O que é Metodologia Ativa?</h2>" } } },
+          { "x": 5, "y": 28, "width": 90, "height": 60, "action": { "library": "H5P.Text 1.1", "params": { "text": "<p>Segundo <strong>José Moran</strong>, metodologia ativa é <em>o jeito como o aluno aprende ativamente, com senso crítico, autonomia e protagonismo</em>. Não é 'técnica' — é um conjunto de princípios.</p><p>A sala de aula deixa de ser palco e vira oficina.</p>" } } }
+        ]
+      },
+      {
+        "elements": [
+          { "x": 5, "y": 5, "width": 80, "height": 20, "action": { "library": "H5P.Text 1.1", "params": { "text": "<h2 style='color:#0f5257'>Por que mudar a sala de aula?</h2>" } } },
+          { "x": 5, "y": 28, "width": 90, "height": 65, "action": { "library": "H5P.Text 1.1", "params": { "text": "<ul><li><strong>TALIS 2018:</strong> professores brasileiros passam 80% do tempo dando aula expositiva.</li><li><strong>PISA 2022:</strong> correlação entre protagonismo discente e desempenho.</li><li>Sala de aula invertida + rotação por estações adoam esses números sem exigir infraestrutura cara.</li></ul>" } } }
+        ]
+      },
+      {
+        "elements": [
+          { "x": 5, "y": 5, "width": 80, "height": 20, "action": { "library": "H5P.Text 1.1", "params": { "text": "<h2 style='color:#0f5257'>Sala de Aula Invertida (Flipped)</h2>" } } },
+          { "x": 5, "y": 28, "width": 90, "height": 65, "action": { "library": "H5P.Text 1.1", "params": { "text": "<p><strong>Antes (em casa):</strong> vídeo, podcast, leitura.</p><p><strong>Agora (em sala):</strong> discussão, prática, projeto.</p><p>Vinheta real da trilha: a <strong>Ilha 1</strong> aplicou exatamente este modelo.</p>" } } }
+        ]
+      },
+      {
+        "elements": [
+          { "x": 5, "y": 5, "width": 80, "height": 20, "action": { "library": "H5P.Text 1.1", "params": { "text": "<h2 style='color:#0f5257'>Rotação por Estações</h2>" } } },
+          { "x": 5, "y": 28, "width": 90, "height": 65, "action": { "library": "H5P.Text 1.1", "params": { "text": "<p>A turma é dividida em grupos que circulam por 3-5 estações dentro do mesmo tempo de aula. Cada estação propõe um <em>ritmo e uma mídia diferentes</em> para que <strong>todos</strong> cubram o mesmo conteúdo.</p>" } } }
+        ]
+      },
+      {
+        "elements": [
+          { "x": 5, "y": 5, "width": 80, "height": 20, "action": { "library": "H5P.Text 1.1", "params": { "text": "<h2 style='color:#0f5257'>Laboratório Rotacional</h2>" } } },
+          { "x": 5, "y": 28, "width": 90, "height": 65, "action": { "library": "H5P.Text 1.1", "params": { "text": "<p>Mesma estrutura da rotação, mas <strong>toda a parte digital acontece dentro do horário escolar</strong> — útil quando os alunos não têm internet em casa (realidade comum na Educação Básica brasileira).</p>" } } }
+        ]
+      },
+      {
+        "elements": [
+          { "x": 5, "y": 5, "width": 80, "height": 20, "action": { "library": "H5P.Text 1.1", "params": { "text": "<h2 style='color:#0f5257'>Flex Model</h2>" } } },
+          { "x": 5, "y": 28, "width": 90, "height": 65, "action": { "library": "H5P.Text 1.1", "params": { "text": "<p>O aluno segue um caminho <em>altamente personalizado</em>: atividades individuais em mídia online, momentos de pequenos grupos e sessões pontuais com o professor para toda a turma. Indicado quando há dispositivos 1:1 disponíveis.</p>" } } }
+        ]
+      },
+      {
+        "elements": [
+          { "x": 5, "y": 5, "width": 80, "height": 20, "action": { "library": "H5P.Text 1.1", "params": { "text": "<h2 style='color:#0f5257'>Quadro comparativo</h2>" } } },
+          { "x": 5, "y": 30, "width": 90, "height": 60, "action": { "library": "H5P.Text 1.1", "params": { "text": "<table border='1' cellpadding='8' style='border-collapse:collapse'><tr><th>Modelo</th><th>Requer tecnologia em casa?</th><th>Ideal para</th></tr><tr><td>Sala Invertida</td><td>Sim</td><td>Conteúdo conceitual estável</td></tr><tr><td>Rotação por Estações</td><td>Não</td><td>Currículo diversificado, sala comum</td></tr><tr><td>Laboratório Rotacional</td><td>Não</td><td>Comunidades sem acesso</td></tr><tr><td>Flex Model</td><td>Sim</td><td>Personalização profunda, dispositivos 1:1</td></tr></table>" } } }
+        ]
+      },
+      {
+        "elements": [
+          { "x": 5, "y": 5, "width": 90, "height": 18, "action": { "library": "H5P.Text 1.1", "params": { "text": "<h2 style='color:#0f5257'>🎮 Atividade: monte sua estação ideal</h2>" } } },
+          { "x": 5, "y": 25, "width": 90, "height": 70, "action": {
+            "library": "H5P.DragQuestion 1.14",
+            "params": {
+              "question": "<p>Arraste <strong>5 atividades</strong> para os 5 espaços da estação de aprendizagem (um por categoria). Lembre-se: uma boa estação cobre <em>Mundo Digital + Maker + Cooperação + Avaliação + Prática</em>.</p>",
+              "taskDescription": "Distribua as atividades pelas 5 estações.",
+              "dropZones": [
+                { "label": "🧑 Conteúdo digital curado", "correctElements": ["Atividade 1: vídeo curado + podcast"] },
+                { "label": "🛠️ Atividade maker", "correctElements": ["Atividade 2: prototipagem em papel pardo e lápis de cor"] },
+                { "label": "👥 Trabalho cooperativo", "correctElements": ["Atividade 3: peer instruction com 4 questões conceituais"] },
+                { "label": "📊 Avaliação formativa", "correctElements": ["Atividade 4: rubrica de autoavaliação"] },
+                { "label": "📚 Prática individual", "correctElements": ["Atividade 5: lista de verificação + exercícios do livro"] }
+              ],
+              "elements": [
+                "Atividade 1: vídeo curado + podcast",
+                "Atividade 2: prototipagem em papel pardo e lápis de cor",
+                "Atividade 3: peer instruction com 4 questões conceituais",
+                "Atividade 4: rubrica de autoavaliação",
+                "Atividade 5: lista de verificação + exercícios do livro",
+                "[Distrator] Atividade 6: apresentação de slides pelo professor (aula expositiva)",
+                "[Distrator] Atividade 7: simulado com gabarito sem discussão"
+              ],
+              "feedback": {
+                "overallFeedback": [
+                  { "from": 0, "to": 100, "feedback": "<strong>Boa composição!</strong> Sua estação equilibra mídias, ritmos e formatos." }
+                ]
+              },
+              "behaviour": { "enableRetry": true, "singleDrop": false, "applyPenalties": true, "enableCheckButton": true }
+            }
+          } }
+        ]
+      },
+      {
+        "elements": [
+          { "x": 5, "y": 5, "width": 90, "height": 20, "action": { "library": "H5P.Text 1.1", "params": { "text": "<h2 style='color:#0f5257'>⚠️ Erros frequentes</h2>" } } },
+          { "x": 5, "y": 28, "width": 90, "height": 65, "action": { "library": "H5P.Text 1.1", "params": { "text": "<ol><li>Estações com tempos sem calibração (&gt; 15 min leva os alunos a esperar).</li><li>Agrupamento por afinidade sem rota (todos sempre com a mesma dupla).</li><li>Transições sem aviso prévio.</li><li>Só avaliação somativa no fim.</li><li>Pular a avaliação diagnóstica inicial.</li></ol>" } } }
+        ]
+      },
+      {
+        "elements": [
+          { "x": 5, "y": 5, "width": 90, "height": 20, "action": { "library": "H5P.Text 1.1", "params": { "text": "<h2 style='color:#0f5257'>🌍 Recursos abertos recomendados</h2>" } } },
+          { "x": 5, "y": 28, "width": 90, "height": 65, "action": { "library": "H5P.Text 1.1", "params": { "text": "<ul><li><strong>PhET</strong> (simulações de Ciências e Matemática)</li><li><strong>Khan Academy</strong> em português</li><li><strong>Scratch</strong> (programação visual)</li><li><strong>Google Earth</strong></li><li><strong>H5P</strong> (crie suas próprias atividades)</li><li><strong>Wikisource / Brasiliana Digital</strong> (literatura em domínio público)</li></ul>" } } }
+        ]
+      }
+    ]
+  }
+}

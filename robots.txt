@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://trilha.descomplicandoadocencia.com.br/sitemap.xml

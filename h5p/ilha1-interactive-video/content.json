@@ -1,0 +1,84 @@
+{
+  "video": {
+    "files": [
+      { "path": "https://www.youtube.com/watch?v=zPuQFqU1E2Y", "mime": "video/YouTube" }
+    ],
+    "tracks": []
+  },
+  "interactions": [
+    {
+      "id": "interacao-1-pedagogica",
+      "time": 15,
+      "pause": true,
+      "displayAt": 15,
+      "label": "📌 Dimensão Pedagógica",
+      "library": "H5P.MultiChoice 1.16",
+      "params": {
+        "question": "Quando você planeja uma aula com tecnologia, o que vem ANTES da escolha da ferramenta?",
+        "answers": [
+          { "text": "A ferramenta que eu já sei usar.", "correct": false, "tipsAndFeedback": { "tip": "🔁 Volte atrás: ferramenta a serviço do objetivo, e não ao contrário.", "chosenFeedback": "Risco: a tecnologia define o currículo, não você." } },
+          { "text": "O objetivo de aprendizagem e a habilidade BNCC.", "correct": true, "tipsAndFeedback": { "tip": "✅ O fluxo é objetivo → estratégia → recurso.", "chosenFeedback": "Exato. Esta é a base da integração intencional." } },
+          { "text": "O conteúdo do livro didático.", "correct": false, "tipsAndFeedback": { "tip": "🔁 Lembre-se: livro é uma fonte, não a finalidade.", "chosenFeedback": "Use o livro, mas sempre em função do objetivo." } }
+        ],
+        "behaviour": { "autoCheck": true, "showSolutionsRequiresInput": true },
+        "UI": { "checkAnswerButton": "Conferir" }
+      }
+    },
+    {
+      "id": "interacao-2-cidadania",
+      "time": 70,
+      "pause": true,
+      "label": "📌 Dimensão Cidadania Digital",
+      "library": "H5P.MultiChoice 1.16",
+      "params": {
+        "question": "Qual prática melhor representa a Cidadania Digital docente?",
+        "answers": [
+          { "text": "Bloquear o celular dos alunos em sala.", "correct": false, "tipsAndFeedback": { "tip": "Bloquear é repressão, não formação.", "chosenFeedback": "Tente: pacto de uso consciente, contrato didático." } },
+          { "text": "Promover discussão sobre LGPD e proteção de dados com a turma.", "correct": true, "tipsAndFeedback": { "tip": "✅ Boa! Educação para a privacidade.", "chosenFeedback": "Cidadania digital se ensina." } },
+          { "text": "Pedir que ignorem fake news sem discuti-las.", "correct": false, "tipsAndFeedback": { "tip": "🔁 Leitura crítica requer confronto de fontes.", "chosenFeedback": "Não silenciar — investigar junto com os alunos." } }
+        ],
+        "behaviour": { "autoCheck": true, "showSolutionsRequiresInput": true },
+        "UI": { "checkAnswerButton": "Conferir" }
+      }
+    },
+    {
+      "id": "interacao-3-desenvolvimento",
+      "time": 150,
+      "pause": true,
+      "label": "📌 Dimensão Desenvolvimento Profissional",
+      "library": "H5P.MultiChoice 1.16",
+      "params": {
+        "question": "Qual das opções abaixo é uma forma autêntica de desenvolvimento profissional contínuo?",
+        "answers": [
+          { "text": "Ler blogs educacionais e participar de comunidades online de professores.", "correct": true, "tipsAndFeedback": { "tip": "✅ Aprendizado em rede e autorreflexão.", "chosenFeedback": "Exato. O professor aprende ao compartilhar." } },
+          { "text": "Fazer cursos apenas para comprovar horas.", "correct": false, "tipsAndFeedback": { "tip": "🔁 Cumprir tabela não é aprender.", "chosenFeedback": "Procure cursos que provoquem mudança de prática." } },
+          { "text": "Reproduzir as mesmas aulas há anos.", "correct": false, "tipsAndFeedback": { "tip": "🔁 Repetição sem revisão paralisa o saber.", "chosenFeedback": "Mesmo com bons planos, o contexto muda — reveja sempre." } }
+        ],
+        "behaviour": { "autoCheck": true, "showSolutionsRequiresInput": true },
+        "UI": { "checkAnswerButton": "Conferir" }
+      }
+    },
+    {
+      "id": "interacao-4-integracao",
+      "time": 230,
+      "pause": true,
+      "label": "📌 Integração das 3 dimensões",
+      "library": "H5P.Text 1.1",
+      "params": {
+        "text": "<strong>🎯 Síntese:</strong> Saberes Digitais Docentes acontecem quando você <em>integra</em> uma intenção pedagógica com responsabilidade ética (LGPD, fontes verificáveis) usando a tecnologia a serviço do aprendizado real. <br><br>Próximo passo: registre sua autoavaliação nas Cornell Notes da atividade." 
+      }
+    }
+  ],
+  "summary": {
+    "displayAt": 295,
+    "library": "H5P.MultiChoice 1.16",
+    "params": {
+      "question": "Qual é o seu próximo passo hoje?",
+      "answers": [
+        { "text": "Vou rever meu plano de aula da próxima semana." },
+        { "text": "Vou abrir a Ilha 2 (BNCC da Computação)." },
+        { "text": "Vou conversar com um colega sobre LGPD em nossa escola." }
+      ]
+    }
+  }
+}
