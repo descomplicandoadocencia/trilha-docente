@@ -14,15 +14,21 @@
 <div id="h5p-container"></div>
 <script src="https://cdn.jsdelivr.net/npm/h5p-standalone@3.6.3/dist/main.bundle.js"></script>
 <script>
-  // Uso: h5p/player.html?dir=ilha1-interactive-video
   const params = new URLSearchParams(window.location.search);
-  const dir = params.get('dir') || 'ilha1-interactive-video';
+  const requestedDir = params.get('dir') || params.get('p') || 'ilha1-interactive-video';
+  const dir = String(requestedDir)
+    .trim()
+    .replace(/^\/+/, '')
+    .replace(/^h5p\//, '')
+    .replace(/\/+$/, '');
+
   const el = document.getElementById('h5p-container');
   const options = {
     h5pJsonPath: dir,
     frameJs: 'https://cdn.jsdelivr.net/npm/h5p-standalone@3.6.3/dist/frame.bundle.js',
     frameCss: 'https://cdn.jsdelivr.net/npm/h5p-standalone@3.6.3/dist/styles/h5p.css'
   };
+
   new H5PStandalone.H5P(el, options).catch(err => {
     el.innerHTML = '<p style="color:#fff;padding:20px">Erro ao carregar o pacote H5P: ' + err + '</p>';
   });
