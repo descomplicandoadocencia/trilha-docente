@@ -3,32 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Atividade H5P</title>
-<!-- Player standalone: renderiza pacotes .h5p extraídos, sem servidor. -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/h5p-standalone@3.6.0/dist/styles/h5p.css">
-<style>body{margin:0;background:#e9f2f2;font-family:system-ui,sans-serif}#h5p-container{max-width:880px;margin:0 auto;padding:14px}.msg{background:#fff;border:2px dashed #1d7a80;border-radius:12px;padding:28px;margin:30px auto;max-width:560px;color:#233038;line-height:1.6}.msg h1{font-size:1.1rem;color:#0f5257;margin:0 0 8px}code{background:#eef;padding:1px 6px;border-radius:6px}</style>
+<title>H5P Player — Arquiteto da Cultura Digital</title>
+<style>
+  html,body{margin:0;padding:0;background:#0b1f22;font-family:sans-serif}
+  #h5p-container{width:100%;max-width:960px;margin:0 auto}
+  .h5p-iframe-wrapper{position:relative}
+</style>
 </head>
 <body>
 <div id="h5p-container"></div>
-<script src="https://cdn.jsdelivr.net/npm/h5p-standalone@3.6.0/dist/main.bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/h5p-standalone@3.6.3/dist/main.bundle.js"></script>
 <script>
-(async function () {
-  const p = new URLSearchParams(location.search).get('p') || '';
+  // Uso: h5p/player.html?dir=ilha1-interactive-video
+  const params = new URLSearchParams(window.location.search);
+  const dir = params.get('dir') || 'ilha1-interactive-video';
   const el = document.getElementById('h5p-container');
-  const path = p.replace(/^\/+/, '').replace(/\.\./g, '');
-  try {
-    const head = await fetch(path + 'content/content.json', { method: 'HEAD' });
-    if (!head.ok) throw new Error('conteudo ausente');
-    await new H5PStandalone.H5P(el, {
-      h5pJsonPath: path,
-      frameJs: 'https://cdn.jsdelivr.net/npm/h5p-standalone@3.6.0/dist/frame.bundle.js',
-      frameCss: 'https://cdn.jsdelivr.net/npm/h5p-standalone@3.6.0/dist/styles/h5p.css'
-    });
-  } catch (e) {
-    el.innerHTML = '<div class="msg"><h1>🧪 Atividade H5P em construção</h1>' +
-      'O pacote desta atividade ainda não foi publicado. Para ativá-la: crie o recurso no <strong>Lumi</strong> (gratuito), exporte como <code>.h5p</code>, extraia o conteúdo em <code>' + (path || 'h5p/<pacote>/') + '</code> e recarregue esta página.</div>';
-  }
-})();
+  const options = {
+    h5pJsonPath: dir,
+    frameJs: 'https://cdn.jsdelivr.net/npm/h5p-standalone@3.6.3/dist/frame.bundle.js',
+    frameCss: 'https://cdn.jsdelivr.net/npm/h5p-standalone@3.6.3/dist/styles/h5p.css'
+  };
+  new H5PStandalone.H5P(el, options).catch(err => {
+    el.innerHTML = '<p style="color:#fff;padding:20px">Erro ao carregar o pacote H5P: ' + err + '</p>';
+  });
 </script>
 </body>
 </html>

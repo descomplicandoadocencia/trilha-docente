@@ -1,0 +1,470 @@
+{
+ "interactiveVideo": {
+  "video": {
+   "files": [
+    {
+     "path": "https://www.youtube.com/watch?v=zPuQFqU1E2Y",
+     "mime": "video/YouTube"
+    }
+   ],
+   "startScreenOptions": {
+    "title": "Autoavaliação de Saberes Digitais Docentes",
+    "hideStartTitle": false,
+    "shortStartDescription": "Ilha 1 · Guardiã dos Saberes Digitais — mapeie sua fluência digital docente."
+   },
+   "textTracks": {
+    "videoTrack": []
+   }
+  },
+  "assets": {
+   "interactions": [
+    {
+     "duration": {
+      "from": 15,
+      "to": 75
+     },
+     "pause": true,
+     "displayType": "button",
+     "buttonOnMobile": false,
+     "label": "📌 Dimensão Pedagógica",
+     "x": 38,
+     "y": 42,
+     "width": 24,
+     "height": 16,
+     "libraryTitle": "MultiChoice",
+     "action": {
+      "library": "H5P.MultiChoice 1.16",
+      "params": {
+       "question": "Quando você planeja uma aula com tecnologia, o que vem ANTES da escolha da ferramenta?",
+       "answers": [
+        {
+         "text": "A ferramenta que eu já sei usar.",
+         "correct": false,
+         "tipsAndFeedback": {
+          "tip": "🔁 Volte atrás: ferramenta a serviço do objetivo, e não ao contrário.",
+          "chosenFeedback": "Risco: a tecnologia define o currículo, não você."
+         }
+        },
+        {
+         "text": "O objetivo de aprendizagem e a habilidade BNCC.",
+         "correct": true,
+         "tipsAndFeedback": {
+          "tip": "✅ O fluxo é objetivo → estratégia → recurso.",
+          "chosenFeedback": "Exato. Esta é a base da integração intencional."
+         }
+        },
+        {
+         "text": "O conteúdo do livro didático.",
+         "correct": false,
+         "tipsAndFeedback": {
+          "tip": "🔁 Lembre-se: livro é uma fonte, não a finalidade.",
+          "chosenFeedback": "Use o livro, mas sempre em função do objetivo."
+         }
+        }
+       ],
+       "behaviour": {
+        "autoCheck": true,
+        "showSolutionsRequiresInput": true
+       },
+       "UI": {
+        "checkAnswerButton": "Conferir"
+       }
+      },
+      "subContentId": "139269d0-41fb-44aa-8746-8735c95e8b18",
+      "metadata": {
+       "contentType": "MultiChoice",
+       "license": "U",
+       "title": "📌 Dimensão Pedagógica"
+      }
+     },
+     "adaptivity": {
+      "correct": {
+       "allowOptOut": false,
+       "message": "",
+       "seekLabel": ""
+      },
+      "wrong": {
+       "allowOptOut": false,
+       "message": "",
+       "seekLabel": ""
+      },
+      "requireCompletion": false
+     },
+     "visuals": {
+      "backgroundColor": "rgba(0,0,0,0.7)",
+      "boxShadow": true
+     },
+     "goto": {
+      "visualize": false
+     }
+    },
+    {
+     "duration": {
+      "from": 70,
+      "to": 130
+     },
+     "pause": true,
+     "displayType": "button",
+     "buttonOnMobile": false,
+     "label": "📌 Dimensão Cidadania Digital",
+     "x": 38,
+     "y": 42,
+     "width": 24,
+     "height": 16,
+     "libraryTitle": "MultiChoice",
+     "action": {
+      "library": "H5P.MultiChoice 1.16",
+      "params": {
+       "question": "Qual prática melhor representa a Cidadania Digital docente?",
+       "answers": [
+        {
+         "text": "Bloquear o celular dos alunos em sala.",
+         "correct": false,
+         "tipsAndFeedback": {
+          "tip": "Bloquear é repressão, não formação.",
+          "chosenFeedback": "Tente: pacto de uso consciente, contrato didático."
+         }
+        },
+        {
+         "text": "Promover discussão sobre LGPD e proteção de dados com a turma.",
+         "correct": true,
+         "tipsAndFeedback": {
+          "tip": "✅ Boa! Educação para a privacidade.",
+          "chosenFeedback": "Cidadania digital se ensina."
+         }
+        },
+        {
+         "text": "Pedir que ignorem fake news sem discuti-las.",
+         "correct": false,
+         "tipsAndFeedback": {
+          "tip": "🔁 Leitura crítica requer confronto de fontes.",
+          "chosenFeedback": "Não silenciar — investigar junto com os alunos."
+         }
+        }
+       ],
+       "behaviour": {
+        "autoCheck": true,
+        "showSolutionsRequiresInput": true
+       },
+       "UI": {
+        "checkAnswerButton": "Conferir"
+       }
+      },
+      "subContentId": "fc2285c5-8ce8-4b56-98e8-512e1bc9252f",
+      "metadata": {
+       "contentType": "MultiChoice",
+       "license": "U",
+       "title": "📌 Dimensão Cidadania Digital"
+      }
+     },
+     "adaptivity": {
+      "correct": {
+       "allowOptOut": false,
+       "message": "",
+       "seekLabel": ""
+      },
+      "wrong": {
+       "allowOptOut": false,
+       "message": "",
+       "seekLabel": ""
+      },
+      "requireCompletion": false
+     },
+     "visuals": {
+      "backgroundColor": "rgba(0,0,0,0.7)",
+      "boxShadow": true
+     },
+     "goto": {
+      "visualize": false
+     }
+    },
+    {
+     "duration": {
+      "from": 150,
+      "to": 210
+     },
+     "pause": true,
+     "displayType": "button",
+     "buttonOnMobile": false,
+     "label": "📌 Dimensão Desenvolvimento Profissional",
+     "x": 38,
+     "y": 42,
+     "width": 24,
+     "height": 16,
+     "libraryTitle": "MultiChoice",
+     "action": {
+      "library": "H5P.MultiChoice 1.16",
+      "params": {
+       "question": "Qual das opções abaixo é uma forma autêntica de desenvolvimento profissional contínuo?",
+       "answers": [
+        {
+         "text": "Ler blogs educacionais e participar de comunidades online de professores.",
+         "correct": true,
+         "tipsAndFeedback": {
+          "tip": "✅ Aprendizado em rede e autorreflexão.",
+          "chosenFeedback": "Exato. O professor aprende ao compartilhar."
+         }
+        },
+        {
+         "text": "Fazer cursos apenas para comprovar horas.",
+         "correct": false,
+         "tipsAndFeedback": {
+          "tip": "🔁 Cumprir tabela não é aprender.",
+          "chosenFeedback": "Procure cursos que provoquem mudança de prática."
+         }
+        },
+        {
+         "text": "Reproduzir as mesmas aulas há anos.",
+         "correct": false,
+         "tipsAndFeedback": {
+          "tip": "🔁 Repetição sem revisão paralisa o saber.",
+          "chosenFeedback": "Mesmo com bons planos, o contexto muda — reveja sempre."
+         }
+        }
+       ],
+       "behaviour": {
+        "autoCheck": true,
+        "showSolutionsRequiresInput": true
+       },
+       "UI": {
+        "checkAnswerButton": "Conferir"
+       }
+      },
+      "subContentId": "c845ad07-add9-430d-a9eb-8050155a658e",
+      "metadata": {
+       "contentType": "MultiChoice",
+       "license": "U",
+       "title": "📌 Dimensão Desenvolvimento Profissional"
+      }
+     },
+     "adaptivity": {
+      "correct": {
+       "allowOptOut": false,
+       "message": "",
+       "seekLabel": ""
+      },
+      "wrong": {
+       "allowOptOut": false,
+       "message": "",
+       "seekLabel": ""
+      },
+      "requireCompletion": false
+     },
+     "visuals": {
+      "backgroundColor": "rgba(0,0,0,0.7)",
+      "boxShadow": true
+     },
+     "goto": {
+      "visualize": false
+     }
+    },
+    {
+     "duration": {
+      "from": 230,
+      "to": 290
+     },
+     "pause": true,
+     "displayType": "poster",
+     "buttonOnMobile": false,
+     "label": "📌 Integração das 3 dimensões",
+     "x": 30,
+     "y": 70,
+     "width": 40,
+     "height": 18,
+     "libraryTitle": "Text",
+     "action": {
+      "library": "H5P.Text 1.1",
+      "params": {
+       "text": "<strong>🎯 Síntese:</strong> Saberes Digitais Docentes acontecem quando você <em>integra</em> uma intenção pedagógica com responsabilidade ética (LGPD, fontes verificáveis) usando a tecnologia a serviço do aprendizado real. <br><br>Próximo passo: registre sua autoavaliação nas Cornell Notes da atividade."
+      },
+      "subContentId": "e5e570c9-b4c6-4bca-a07c-1330d32d2339",
+      "metadata": {
+       "contentType": "Text",
+       "license": "U",
+       "title": "📌 Integração das 3 dimensões"
+      }
+     },
+     "adaptivity": {
+      "correct": {
+       "allowOptOut": false,
+       "message": "",
+       "seekLabel": ""
+      },
+      "wrong": {
+       "allowOptOut": false,
+       "message": "",
+       "seekLabel": ""
+      },
+      "requireCompletion": false
+     },
+     "visuals": {
+      "backgroundColor": "rgba(0,0,0,0.7)",
+      "boxShadow": true
+     },
+     "goto": {
+      "visualize": false
+     }
+    },
+    {
+     "duration": {
+      "from": 295,
+      "to": 315
+     },
+     "pause": true,
+     "displayType": "poster",
+     "buttonOnMobile": false,
+     "label": "🎯 Encerramento e próximo passo",
+     "x": 25,
+     "y": 30,
+     "width": 50,
+     "height": 40,
+     "libraryTitle": "MultiChoice",
+     "action": {
+      "library": "H5P.MultiChoice 1.16",
+      "params": {
+       "question": "Qual é o seu próximo passo hoje?",
+       "answers": [
+        {
+         "text": "Vou rever meu plano de aula da próxima semana.",
+         "correct": false,
+         "tipsAndFeedback": {
+          "tip": "",
+          "chosenFeedback": "Ótima escolha para seguir sua trilha!"
+         }
+        },
+        {
+         "text": "Vou abrir a Ilha 2 (BNCC da Computação).",
+         "correct": false,
+         "tipsAndFeedback": {
+          "tip": "",
+          "chosenFeedback": "Ótima escolha para seguir sua trilha!"
+         }
+        },
+        {
+         "text": "Vou conversar com um colega sobre LGPD em nossa escola.",
+         "correct": false,
+         "tipsAndFeedback": {
+          "tip": "",
+          "chosenFeedback": "Ótima escolha para seguir sua trilha!"
+         }
+        }
+       ],
+       "behaviour": {
+        "autoCheck": false,
+        "enableRetry": false,
+        "enableSolutionsButton": false,
+        "singlePoint": true,
+        "type": "auto"
+       },
+       "UI": {
+        "checkAnswerButton": "Confirmar"
+       }
+      },
+      "subContentId": "d61d4bcb-e4c2-4e59-833f-0576f9fcc5e7",
+      "metadata": {
+       "contentType": "MultiChoice",
+       "license": "U",
+       "title": "Próximo passo"
+      }
+     },
+     "adaptivity": {
+      "correct": {
+       "allowOptOut": false,
+       "message": "",
+       "seekLabel": ""
+      },
+      "wrong": {
+       "allowOptOut": false,
+       "message": "",
+       "seekLabel": ""
+      },
+      "requireCompletion": false
+     },
+     "visuals": {
+      "backgroundColor": "rgba(15,82,87,0.9)",
+      "boxShadow": true
+     },
+     "goto": {
+      "visualize": false
+     }
+    }
+   ],
+   "bookmarks": [
+    {
+     "time": 15,
+     "label": "📌 Dimensão Pedagógica"
+    },
+    {
+     "time": 70,
+     "label": "📌 Dimensão Cidadania Digital"
+    },
+    {
+     "time": 150,
+     "label": "📌 Dimensão Desenvolvimento Profissional"
+    },
+    {
+     "time": 230,
+     "label": "📌 Integração das 3 dimensões"
+    },
+    {
+     "time": 295,
+     "label": "Próximo passo"
+    }
+   ],
+   "endscreens": []
+  },
+  "summary": {
+   "task": {
+    "library": "H5P.Summary 1.10",
+    "params": {
+     "intro": "Resuma o que você aprendeu na Ilha 1 selecionando as afirmações corretas:",
+     "summaries": [
+      {
+       "subContentId": "01447726-3a5d-425a-a387-b3f930ddde38",
+       "tip": "",
+       "summary": [
+        "Saberes Digitais Docentes integram dimensão pedagógica, cidadania digital e desenvolvimento profissional.",
+        "Tecnologia deve ser usada sem intenção pedagógica definida.",
+        "A tecnologia é escolhida antes do objetivo de aprendizagem."
+       ]
+      }
+     ]
+    }
+   },
+   "displayAt": 3
+  }
+ },
+ "override": {
+  "startVideoAt": 0,
+  "autoplay": false,
+  "loop": false,
+  "hasNoAutoPause": false,
+  "showSolutionButton": "on",
+  "retryButton": "on",
+  "showBookmarksmenuOnLoad": false,
+  "showRewind10": true,
+  "preventSkippingMode": "none",
+  "deactivateSound": false
+ },
+ "l10n": {
+  "interaction": "Interação",
+  "play": "Reproduzir",
+  "pause": "Pausar",
+  "mute": "Sem áudio",
+  "unmute": "Com áudio",
+  "quality": "Qualidade do vídeo",
+  "captions": "Legendas",
+  "close": "Fechar",
+  "fullscreen": "Tela cheia",
+  "exitFullscreen": "Sair da tela cheia",
+  "summary": "Resumo",
+  "bookmarks": "Marcadores",
+  "endscreen": "Tela final",
+  "defaultAdaptivitySeekLabel": "Continuar",
+  "continueWithVideo": "Continuar vídeo",
+  "more": "Mais",
+  "playbackRate": "Velocidade",
+  "rewind10": "Voltar 10 segundos",
+  "navDisabled": "Navegação desabilitada"
+ }
+}
