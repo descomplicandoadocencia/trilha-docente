@@ -139,52 +139,41 @@
     </div>
   </section>
 
-  <section>
-    <h2 style="margin-top:46px">🗺️ O Arquipélago da Cultura Digital</h2>
-    <p>Complete as missões de cada ilha para acumular XP e desbloquear a próxima. Clique em uma ilha para abrir suas videoaulas.</p>
-    <div class="mapcard">
-      <svg viewBox="0 0 1000 430" width="100%" role="img" aria-label="Mapa das 4 ilhas da trilha">
-        <defs>
-          <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#bfe3e4"/><stop offset="1" stop-color="#dff0f0"/>
-          </linearGradient>
-        </defs>
-        <rect width="1000" height="430" rx="16" fill="url(#sea)"/>
-        <path d="M170 300 Q 320 340 470 270 T 810 250" stroke="#c9a24b" stroke-width="4" stroke-dasharray="10 8" fill="none"/>
-        <g class="isl" data-island="1">
-          <ellipse cx="170" cy="240" rx="105" ry="58"/>
-          <ellipse class="base" cx="170" cy="252" rx="105" ry="20" opacity=".35"/>
-          <text class="lockicon" x="170" y="215" text-anchor="middle">🏝️</text>
-          <text x="170" y="248" text-anchor="middle">Ilha 1</text>
-          <text x="170" y="266" text-anchor="middle" font-size="11" font-weight="400">Saberes Digitais</text>
-        </g>
-        <g class="isl" data-island="2">
-          <ellipse cx="470" cy="180" rx="105" ry="58"/>
-          <ellipse class="base" cx="470" cy="192" rx="105" ry="20" opacity=".35"/>
-          <text class="lockicon" x="470" y="155" text-anchor="middle">🔒</text>
-          <text x="470" y="188" text-anchor="middle">Ilha 2</text>
-          <text x="470" y="206" text-anchor="middle" font-size="11" font-weight="400">BNCC Computação</text>
-        </g>
-        <g class="isl" data-island="3">
-          <ellipse cx="810" cy="150" rx="105" ry="58"/>
-          <ellipse class="base" cx="810" cy="162" rx="105" ry="20" opacity=".35"/>
-          <text class="lockicon" x="810" y="125" text-anchor="middle">🔒</text>
-          <text x="810" y="158" text-anchor="middle">Ilha 3</text>
-          <text x="810" y="176" text-anchor="middle" font-size="11" font-weight="400">Metodologias Ativas</text>
-        </g>
-        <g class="isl" data-island="4">
-          <ellipse cx="560" cy="360" rx="115" ry="55"/>
-          <ellipse class="base" cx="560" cy="371" rx="115" ry="18" opacity=".35"/>
-          <text class="lockicon" x="560" y="338" text-anchor="middle">🔒</text>
-          <text x="560" y="368" text-anchor="middle">Ilha 4</text>
-          <text x="560" y="386" text-anchor="middle" font-size="11" font-weight="400">Criação com IAG + H5P</text>
-        </g>
-      </svg>
-      <div class="legend">
-        <span>🏝️ Ilha desbloqueada</span><span>✅ Ilha concluída</span><span>🔒 Bloqueada (acumule XP)</span>
-        <span>⭐ Total da trilha: 790 XP</span>
+  <section class="h5p-map-section" style="margin-top: 46px; text-align: center;">
+      <h2>🗺️ O Arquipélago da Cultura Digital</h2>
+      <p>Complete as missões de cada ilha para acumular XP e desbloquear a próxima. Navegue pelo mapa interativo abaixo para acessar os desafios e videoaulas de cada etapa.</p>
+      
+      <!-- Contêiner responsivo para o iframe do H5P -->
+<div class="h5p-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 1000px; margin: 0 auto; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); background-image: url('assets/img/background-arquipelago.png'); background-size: cover; background-position: center;">
+    
+    <!-- 
+        INSTRUÇÕES PARA O WEBDESIGNER:
+        1. A imagem 'background-arquipelago_2.jpg' está configurada como fallback de visualização (background-image) na div acima, caso o iframe demore a carregar.
+        2. Crie o conteúdo "Game Map" no seu ambiente H5P (ex: Moodle, WordPress ou H5P.com).
+        3. Utilize a imagem 'assets/img/background-arquipelago_2.jpg' como imagem de fundo (background) DO PRÓPRIO GAME MAP DENTRO DO EDITOR H5P. O H5P exige que a imagem seja carregada na plataforma deles para aplicar a interatividade por cima.
+        4. Adicione os 'Stages' (pontos interativos) no H5P sobre cada uma das 4 ilhas ilustradas na imagem.
+        5. Copie o código de 'Embed' (Incorporação) gerado pelo H5P e cole substituindo a tag <iframe> abaixo.
+    -->
+    
+    <iframe 
+        src="game_map.html" 
+        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; background-color: transparent;"
+        frameborder="0" 
+        allowfullscreen="allowfullscreen" 
+        allow="autoplay *; geolocation *; microphone *; camera *; midi *; encrypted-media *" 
+        title="Arquipélago da Cultura Digital - Game Map">
+    </iframe>
+    <script src="https://h5p.org/sites/all/modules/h5p/library/js/h5p-resizer.js" charset="UTF-8"></script>
+</div>
+          
       </div>
-    </div>
+
+      <div class="legend" style="margin-top: 20px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; font-size: 14px; color: #555;">
+          <span>🏝️ Ilha disponível no mapa</span>
+          <span>✅ Etapa concluída no Game Map</span>
+          <span>🔒 Etapa bloqueada pelo trajeto</span>
+          <span style="font-weight: bold; color: #c9a24b;">⭐ Total da trilha: 790 XP</span>
+      </div>
   </section>
 
   <section>

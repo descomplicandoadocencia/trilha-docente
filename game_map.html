@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arquipélago da Cultura Digital — Game Map Interativo</title>
+    <!-- Tailwind CSS for modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            500: '#14b8a6',
+                            700: '#0f5257',
+                            900: '#132e32',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Fraunces', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b1f22;
+            color: #e2e8f0;
+            user-select: none;
+            overflow-x: hidden;
+        }
+
+        /* Pulsing Hotspot Marker Styles */
+        .stage-pin {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+            z-index: 20;
+        }
+
+        .stage-pin:hover {
+            transform: translate(-50%, -60%) scale(1.15);
+            z-index: 30;
+        }
+
+        .pulse-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            animation: pulse-ring 2s infinite ease-out;
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                width: 100%;
+                height: 100%;
+                opacity: 0.8;
+            }
+            100% {
+                width: 260%;
+                height: 260%;
+                opacity: 0;
+            }
+        }
+
+        /* Glassmorphism effects */
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.82);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.2);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(20, 184, 166, 0.5);
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between items-center p-2 sm:p-4 bg-slate-950">
+
+    <!-- Top HUD Bar -->
+    <header class="w-full max-w-5xl glass-panel rounded-2xl p-3 mb-3 flex flex-wrap justify-between items-center gap-2 shadow-xl z-10 border border-teal-500/20">
+        <div class="flex items-center gap-2">
+            <span class="text-2xl">🏝️</span>
+            <div>
+                <h1 class="font-serif font-bold text-sm sm:text-lg text-teal-300 leading-tight">Arquipélago da Cultura Digital</h1>
+                <p class="text-xs text-slate-400 hidden sm:block">Trilha Gamificada de Capacitação Docente</p>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-4 text-xs sm:text-sm font-semibold">
+            <div class="bg-slate-800/80 px-3 py-1.5 rounded-xl border border-slate-700 flex items-center gap-1.5 text-amber-300">
+                <span>⭐</span>
+                <span>XP: <b id="totalXp">0</b></span>
+            </div>
+            <div class="bg-slate-800/80 px-3 py-1.5 rounded-xl border border-slate-700 flex items-center gap-1.5 text-teal-300">
+                <span>🎯</span>
+                <span>Progresso: <b id="completedCount">0</b>/4</span>
+            </div>
+            <button id="btnReset" class="text-xs text-slate-400 hover:text-rose-400 transition-colors underline" title="Reiniciar Progresso">
+                Reiniciar
+            </button>
+        </div>
+    </header>
+
+    <!-- Interactive Game Map Container (16:9 Aspect Ratio Container) -->
+    <main class="relative w-full max-w-5xl rounded-2xl overflow-hidden shadow-2xl border-2 border-teal-500/30 bg-slate-900 group">
+        
+        <!-- Map Image Layer -->
+        <div class="relative w-full" style="padding-bottom: 50%;"> <!-- Aspect ratio matches background image -->
+            <img 
+                id="mapImage" 
+                src="assets/img/background-arquipelago.png" 
+                onerror="this.onerror=null; this.src='https://placehold.co/1200x600/0f5257/ffffff?text=Arquipelago+da+Cultura+Digital';" 
+                alt="Mapa do Arquipélago da Cultura Digital" 
+                class="absolute inset-0 w-full h-full object-cover select-none"
+            >
+
+            <!-- Overlay SVG for connection paths glow effect -->
+            <svg class="absolute inset-0 w-full h-full pointer-events-none z-10" viewBox="0 0 1000 500" preserveAspectRatio="none">
+                <path d="M 200 130 Q 300 320 370 300 T 670 170 T 870 330" fill="none" stroke="#2dd4bf" stroke-width="3" stroke-dasharray="6,6" opacity="0.4" />
+            </svg>
+
+            <!-- STAGE 1: Ilha 1 - Saberes Digitais (Top-Left) -->
+            <div id="stage-1" class="stage-pin group/pin" style="left: 17%; top: 28%;" onclick="openStageModal(1)">
+                <div class="pulse-ring bg-teal-400"></div>
+                <div class="relative w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-slate-900 border-2 border-teal-400 flex items-center justify-center text-xl sm:text-2xl shadow-lg shadow-teal-500/50 group-hover/pin:border-amber-400 transition-colors">
+                    <span>📡</span>
+                    <span id="badge-1" class="absolute -top-1 -right-1 bg-teal-500 text-slate-950 font-bold text-[10px] w-5 h-5 rounded-full flex items-center justify-center border border-slate-900">1</span>
+                </div>
+                <div class="absolute top-full left-1/2 -translate-x-1/2 mt-1 whitespace-nowrap bg-slate-950/90 text-teal-200 text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-full border border-teal-500/30 opacity-90 group-hover/pin:opacity-100 shadow-md">
+                    1. Saberes Digitais
+                </div>
+            </div>
+
+            <!-- STAGE 2: Ilha 2 - BNCC Computação (Bottom Middle-Left) -->
+            <div id="stage-2" class="stage-pin group/pin" style="left: 37%; top: 62%;" onclick="openStageModal(2)">
+                <div class="pulse-ring bg-sky-400"></div>
+                <div class="relative w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-slate-900 border-2 border-sky-400 flex items-center justify-center text-xl sm:text-2xl shadow-lg shadow-sky-500/50 group-hover/pin:border-amber-400 transition-colors">
+                    <span>💻</span>
+                    <span id="badge-2" class="absolute -top-1 -right-1 bg-sky-500 text-slate-950 font-bold text-[10px] w-5 h-5 rounded-full flex items-center justify-center border border-slate-900">2</span>
+                </div>
+                <div class="absolute top-full left-1/2 -translate-x-1/2 mt-1 whitespace-nowrap bg-slate-950/90 text-sky-200 text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-full border border-sky-500/30 opacity-90 group-hover/pin:opacity-100 shadow-md">
+                    2. BNCC Computação
+                </div>
+            </div>
+
+            <!-- STAGE 3: Ilha 3 - Metodologias Ativas (Top-Right) -->
+            <div id="stage-3" class="stage-pin group/pin" style="left: 67%; top: 34%;" onclick="openStageModal(3)">
+                <div class="pulse-ring bg-amber-400"></div>
+                <div class="relative w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-slate-900 border-2 border-amber-400 flex items-center justify-center text-xl sm:text-2xl shadow-lg shadow-amber-500/50 group-hover/pin:border-amber-300 transition-colors">
+                    <span>⚙️</span>
+                    <span id="badge-3" class="absolute -top-1 -right-1 bg-amber-500 text-slate-950 font-bold text-[10px] w-5 h-5 rounded-full flex items-center justify-center border border-slate-900">3</span>
+                </div>
+                <div class="absolute top-full left-1/2 -translate-x-1/2 mt-1 whitespace-nowrap bg-slate-950/90 text-amber-200 text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-full border border-amber-500/30 opacity-90 group-hover/pin:opacity-100 shadow-md">
+                    3. Metodologias Ativas
+                </div>
+            </div>
+
+            <!-- STAGE 4: Ilha 4 - Criador Cibercultural & IAG (Bottom-Right) -->
+            <div id="stage-4" class="stage-pin group/pin" style="left: 87%; top: 66%;" onclick="openStageModal(4)">
+                <div class="pulse-ring bg-purple-400"></div>
+                <div class="relative w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-slate-900 border-2 border-purple-400 flex items-center justify-center text-xl sm:text-2xl shadow-lg shadow-purple-500/50 group-hover/pin:border-amber-400 transition-colors">
+                    <span>🤖</span>
+                    <span id="badge-4" class="absolute -top-1 -right-1 bg-purple-500 text-slate-950 font-bold text-[10px] w-5 h-5 rounded-full flex items-center justify-center border border-slate-900">4</span>
+                </div>
+                <div class="absolute top-full left-1/2 -translate-x-1/2 mt-1 whitespace-nowrap bg-slate-950/90 text-purple-200 text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-full border border-purple-500/30 opacity-90 group-hover/pin:opacity-100 shadow-md">
+                    4. Criador Cibercultural & IAG
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer Instructions overlay -->
+        <div class="p-3 bg-slate-900/90 border-t border-slate-800 text-xs text-slate-300 flex flex-wrap justify-between items-center gap-2">
+            <span>💡 <b>Dica:</b> Clique sobre os pontos numerados de cada ilha para navegar e realizar as missões pedagógicas.</span>
+            <span class="text-teal-400 font-mono text-[11px]">GitHub Pages Ready · H5P Embed Standard</span>
+        </div>
+    </main>
+
+    <!-- STAGE MODAL DIALOG -->
+    <div id="stageModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md hidden justify-center items-center p-3 z-50 transition-opacity duration-300">
+        <div class="glass-panel w-full max-w-xl rounded-2xl border border-teal-500/30 p-5 sm:p-6 shadow-2xl relative flex flex-col gap-4 max-h-[90vh] overflow-y-auto">
+            
+            <!-- Close Button -->
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white bg-slate-800/80 rounded-full w-8 h-8 flex items-center justify-center border border-slate-700 transition-colors">
+                ✕
+            </button>
+
+            <!-- Modal Header -->
+            <div class="flex items-start gap-3 pr-8">
+                <div id="modalIcon" class="text-3xl p-3 bg-slate-800/80 rounded-2xl border border-slate-700">
+                    📡
+                </div>
+                <div>
+                    <span id="modalStageTag" class="text-[11px] font-bold tracking-wider text-teal-400 uppercase">Estágio 1</span>
+                    <h2 id="modalTitle" class="font-serif font-bold text-lg sm:text-xl text-white">Título da Ilha</h2>
+                    <p id="modalMentor" class="text-xs text-amber-300 mt-0.5">Mentora: Dra. Vani Kenski</p>
+                </div>
+            </div>
+
+            <!-- Modal Description -->
+            <div class="text-xs sm:text-sm text-slate-300 space-y-2 bg-slate-900/60 p-3.5 rounded-xl border border-slate-800/80">
+                <p id="modalDesc">Descrição do desafio e competências desenvolvidas nesta etapa do arquipélago.</p>
+            </div>
+
+            <!-- Task Checklist / Questions -->
+            <div>
+                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Desafio Prático H5P</h3>
+                <div id="modalTaskBox" class="p-3 bg-teal-950/30 border border-teal-500/20 rounded-xl text-xs sm:text-sm text-teal-100 flex flex-col gap-2">
+                    <!-- Task content dynamic injection -->
+                </div>
+            </div>
+
+            <!-- Modal Actions -->
+            <div class="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-slate-800">
+                <a id="modalLessonBtn" href="aula.html" target="_top" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-teal-300 rounded-xl text-xs sm:text-sm font-semibold transition-colors flex items-center gap-1.5 border border-slate-700">
+                    <span>🎥</span>
+                    <span>Ir para Sala de Aula</span>
+                </a>
+                
+                <button id="modalCompleteBtn" onclick="toggleStageCompletion()" class="px-5 py-2.5 bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold rounded-xl text-xs sm:text-sm transition-all shadow-lg shadow-teal-500/30 flex items-center gap-2">
+                    <span>✔</span>
+                    <span id="modalCompleteText">Concluir Ilha (+100 XP)</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Stages Data Structure matching the 4 islands
+        const STAGES = {
+            1: {
+                id: 1,
+                title: "Ilha 1: O Despertar dos Saberes Digitais",
+                mentor: "Mentora Pedagógica: Dra. Vani Moreira Kenski",
+                icon: "📡",
+                color: "teal",
+                desc: "Explore o mapeamento das competências da dimensão pedagógica, cidadania digital e desenvolvimento profissional contínuo. Compreenda a intencionalidade pedagógica no uso de mídias.",
+                task: "Assista ao minidocumentário interativo (Interactive Video H5P) e responda ao teste de autoavaliação de fluência digital docente.",
+                xp: 100
+            },
+            2: {
+                id: 2,
+                title: "Ilha 2: O Cidadão Computacional (BNCC)",
+                mentor: "Mentora Pedagógica: Dra. Léa Fagundes",
+                icon: "💻",
+                color: "sky",
+                desc: "Aplicação prática dos 3 eixos da BNCC da Computação: Pensamento Computacional, Mundo Digital e Cultura Digital. Solução de dilemas através de algoritmos e lógica desplugada.",
+                task: "Navegue pelo Cenário Ramificado (Branching Scenario H5P) e escolha as decisões éticas para resolver a crise de dados da comunidade escolar.",
+                xp: 150
+            },
+            3: {
+                id: 3,
+                title: "Ilha 3: Arquitetura de Experiências Ativas",
+                mentor: "Mentora Pedagógica: Dra. Lílian Bacich",
+                icon: "⚙️",
+                color: "amber",
+                desc: "Redesenho de planos de aula integrando rotação por estações, sala de aula invertida e personalização do ensino com ferramentas analógicas e digitais.",
+                task: "Monte o mosaico de estações de aprendizagem (Drag and Drop H5P) combinando metodologias ativas com objetos de aprendizagem.",
+                xp: 150
+            },
+            4: {
+                id: 4,
+                title: "Ilha 4: O Criador Cibercultural & IAG",
+                mentor: "Mentoras Pedagógicas: Dra. Lúcia Santaella & Dra. Edméa Santos",
+                icon: "🤖",
+                color: "purple",
+                desc: "Engenharia de Prompts pedagógicos, prevenção de alucinações/vieses e autoria em coautoria com Inteligência Artificial Generativa e H5P.",
+                task: "Valide o manifesto do uso ético de IA (Documentation Tool H5P) e crie seu primeiro Objeto de Aprendizagem Digital autoral.",
+                xp: 200
+            }
+        };
+
+        let currentStageId = null;
+        let userProgress = JSON.parse(localStorage.getItem('arquiteto_game_map_progress') || '{"completed": [], "xp": 0}');
+
+        // Initialize HUD and stage badges
+        function initMap() {
+            updateHUD();
+            updateStagePins();
+        }
+
+        // Update progress counters in top bar
+        function updateHUD() {
+            document.getElementById('totalXp').innerText = userProgress.xp;
+            document.getElementById('completedCount').innerText = userProgress.completed.length;
+        }
+
+        // Reflect completed state on pins
+        function updateStagePins() {
+            Object.keys(STAGES).forEach(id => {
+                const badge = document.getElementById(`badge-${id}`);
+                const isCompleted = userProgress.completed.includes(parseInt(id));
+                
+                if (isCompleted) {
+                    badge.innerText = "✓";
+                    badge.classList.remove('bg-teal-500', 'bg-sky-500', 'bg-amber-500', 'bg-purple-500');
+                    badge.classList.add('bg-emerald-400', 'text-slate-950');
+                } else {
+                    badge.innerText = id;
+                }
+            });
+        }
+
+        // Open modal dialog for a selected stage
+        function openStageModal(stageId) {
+            currentStageId = stageId;
+            const data = STAGES[stageId];
+            const isCompleted = userProgress.completed.includes(stageId);
+
+            document.getElementById('modalIcon').innerText = data.icon;
+            document.getElementById('modalStageTag').innerText = `Estágio ${data.id} de 4`;
+            document.getElementById('modalTitle').innerText = data.title;
+            document.getElementById('modalMentor').innerText = data.mentor;
+            document.getElementById('modalDesc').innerText = data.desc;
+
+            // Render task snippet
+            document.getElementById('modalTaskBox').innerHTML = `
+                <div class="flex items-center gap-2 font-semibold text-white">
+                    <span>🎯</span>
+                    <span>Objetivo:</span>
+                </div>
+                <p class="text-slate-300">${data.task}</p>
+                <div class="text-[11px] text-amber-300 font-mono mt-1">+${data.xp} Pontos de Experiência (XP) ao concluir</div>
+            `;
+
+            // Complete button styling based on state
+            const btnText = document.getElementById('modalCompleteText');
+            const btn = document.getElementById('modalCompleteBtn');
+
+            if (isCompleted) {
+                btnText.innerText = "Concluído (Desmarcar)";
+                btn.className = "px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-rose-300 font-bold rounded-xl text-xs sm:text-sm transition-all border border-slate-700 flex items-center gap-2";
+            } else {
+                btnText.innerText = `Concluir Ilha (+${data.xp} XP)`;
+                btn.className = "px-5 py-2.5 bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold rounded-xl text-xs sm:text-sm transition-all shadow-lg shadow-teal-500/30 flex items-center gap-2";
+            }
+
+            const modal = document.getElementById('stageModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('stageModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            currentStageId = null;
+        }
+
+        // Toggle completion status for current stage
+        function toggleStageCompletion() {
+            if (!currentStageId) return;
+
+            const stageId = currentStageId;
+            const data = STAGES[stageId];
+            const index = userProgress.completed.indexOf(stageId);
+
+            if (index > -1) {
+                // Remove completion
+                userProgress.completed.splice(index, 1);
+                userProgress.xp = Math.max(0, userProgress.xp - data.xp);
+            } else {
+                // Add completion
+                userProgress.completed.push(stageId);
+                userProgress.xp += data.xp;
+                playCompletionSound();
+            }
+
+            // Save state to LocalStorage
+            localStorage.setItem('arquiteto_game_map_progress', JSON.stringify(userProgress));
+
+            updateHUD();
+            updateStagePins();
+            closeModal();
+        }
+
+        // Play subtle Web Audio API chime on completion
+        function playCompletionSound() {
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(587.33, ctx.currentTime); // D5
+                osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.2); // A5
+                gain.gain.setValueAtTime(0.15, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start();
+                osc.stop(ctx.currentTime + 0.3);
+            } catch (e) {
+                // Audio context not allowed or supported
+            }
+        }
+
+        // Reset progress listener
+        document.getElementById('btnReset').addEventListener('click', () => {
+            if (confirm("Deseja realmente reiniciar todo o progresso do mapa?")) {
+                userProgress = { completed: [], xp: 0 };
+                localStorage.setItem('arquiteto_game_map_progress', JSON.stringify(userProgress));
+                updateHUD();
+                updateStagePins();
+            }
+        });
+
+        // Initialize on load
+        window.onload = initMap;
+    </script>
+</body>
+</html>
