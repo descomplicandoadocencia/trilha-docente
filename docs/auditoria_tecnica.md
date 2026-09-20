@@ -95,7 +95,7 @@
 **Severidade:** 🔴 crítico | **Esforço:** ~20 min | **Aceitação:** `node --check assets/js/app.js && grep initFinal assets/js/app.js` deve retornar a função e o `final.html` deve mostrar `scoreXP/scoreDetalhe/scoreNivel`.
 
 ```markdown
-PROMPT:
+PROMPT: OK
 Você vai corrigir um ReferenceError no projeto "Arquiteto da Cultura Digital".
 Arquivo: assets/js/app.js
 Linha: perto da linha 175 (depois de initAula)
@@ -427,7 +427,7 @@ assets/img/ e atualizar index.html com <img src> + alt descritivo.
 **Severidade:** 🟡 médio | **Esforço:** ~30 min | **Aceitação:** um único `ilhaN.html?p=...` carrega cada ilha.
 
 ```markdown
-PROMPT:
+PROMPT: ok
 Consolidar h5p/player.html em variantes por ilha.
 Arquivo: gerar h5p/player-ilha1.html, /player-ilha2.html, /player-ilha3.html,
 /player-ilha4.html.

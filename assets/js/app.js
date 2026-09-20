@@ -255,3 +255,164 @@ async function initAula() {
     if (title) title.textContent = 'Não foi possível carregar esta aula.';
   }
 }
+
+/* ---------- Tela final: score, badges, autoavaliação, certificado ---------- */
+const LIKERT_PERGUNTAS = {
+  q1: 'Planejar aulas com tecnologia de forma intencional',
+  q2: 'Aplicar os 3 eixos da BNCC Computação',
+  q3: 'Desenhar rotação por estações equilibrada',
+  q4: 'Usar IAG com verificação ética',
+  q5: 'Aplicar o OAD do Desafio Final com meus alunos'
+};
+
+async function initFinal() {
+  try {
+    await loadVideos();
+
+    const ident = LS.get('ident', null); // mesma chave 'acd_ident' escrita na tela inicial
+    if (!ident && confirm('Você ainda não se identificou. Ir à tela inicial para preencher seus dados?')) {
+      location.href = 'index.html';
+      return;
+    }
+
+    const xp = getXP(), done = getDone();
+    const totalMissoes = VIDEOS.length || 19;
+    const xpFeito = VIDEOS.filter(v => done.includes(v.id)).reduce((s, v) => s + (Number(v.xp) || 0), 0);
+
+    /* 1–3) Score hero (aria-live="polite" já presente no .score-hero de final.html) */
+    const elXP = document.getElementById('scoreXP');
+    const elDet = document.getElementById('scoreDetalhe');
+    const elNiv = document.getElementById('scoreNivel');
+    if (elXP) elXP.textContent = xpFeito + ' XP';
+    if (elDet) elDet.textContent = 'Você completou ' + done.length + ' de ' + totalMissoes + ' atividades · ' + Math.min(100, Math.round(xpFeito / TOTAL_XP * 100)) + '% da trilha';
+
+    /* 4) Nível — Bronze <200 · Prata 200–499 · Ouro ≥500 */
+    const nivel = xpFeito >= 500 ? '🏆 Ouro — Arquiteto da Cultura Digital'
+      : xpFeito >= 200 ? '🥈 Prata — Docência em transformação'
+      : '🥉 Bronze — Jornada em andamento';
+    if (elNiv) elNiv.textContent = 'Nível alcançado: ' + nivel;
+
+    /* 5) Badges: 4 ilhas + final, com texto acessível (não só emoji) */
+    const fb = document.getElementById('finalBadges');
+    if (fb) {
+      let html = '';
+      ISLANDS.forEach(i => {
+        const totais = VIDEOS.filter(v => v.ilha === i.n);
+        const feitos = totais.filter(v => done.includes(v.id)).length;
+        const ok = totais.length > 0 && feitos === totais.length;
+        html += '<div class="badge ' + (ok ? '' : 'locked') + '" role="listitem">' +
+          '<div class="ico" aria-hidden="true">' + i.badge + '</div>' +
+          '<h3>' + i.badgeNome + (ok ? ' — conquistado' : '') + '</h3>' +
+          '<p>' + i.nome + ' · ' + feitos + '/' + totais.length + ' missões concluídas</p></div>';
+      });
+      const fin = totalMissoes > 0 && done.length >= totalMissoes;
+      html += '<div class="badge ' + (fin ? '' : 'locked') + '" role="listitem">' +
+        '<div class="ico" aria-hidden="true">' + FINAL_BADGE.badge + '</div>' +
+        '<h3>' + FINAL_BADGE.badgeNome + (fin ? ' — conquistado' : '') + '</h3>' +
+        '<p>Concluir toda a trilha (' + done.length + '/' + totalMissoes + ' atividades)</p></div>';
+      fb.innerHTML = html;
+    }
+
+    /* 6) Autoavaliação Likert 1–5 — persistida em localStorage 'acd_likert' */
+    const likert = LS.get('likert', {});
+    document.querySelectorAll('.likert .opts').forEach(box => {
+      const name = box.dataset.q;
+      const salvo = likert[name];
+      box.innerHTML = [1, 2, 3, 4, 5].map(v =>
+        '<label><input type="radio" name="' + name + '" value="' + v + '"' + (Number(salvo) === v ? ' checked' : '') + '> ' + v + '</label>').join('');
+    });
+    const pintaIconesLikert = () => {
+      document.querySelectorAll('.likert .q').forEach(q => {
+        const marcado = q.querySelector('input:checked');
+        let icon = q.querySelector('.likert-icone');
+        if (!icon) {
+          icon = document.createElement('span');
+          icon.className = 'likert-icone';
+          q.querySelector('.opts').insertAdjacentElement('afterend', icon);
+        }
+        icon.setAttribute('aria-live', 'polite');
+        icon.textContent = marcado ? '✅ Respondido: ' + marcado.value + '/5' : '⬜ Sem resposta';
+      });
+    };
+    pintaIconesLikert();
+
+    /* 7) mailto — assunto/corpo com encodeURIComponent no botão #sendMailBtn */
+    const btnMail = document.getElementById('sendMailBtn');
+    function montarMailto() {
+      if (!btnMail) return;
+      const l = LS.get('likert', {});
+      const nome = ident ? ident.nome : 'Participante';
+      const linhas = Object.keys(LIKERT_PERGUNTAS).map(q =>
+        '• ' + LIKERT_PERGUNTAS[q] + ': ' + (l[q] ? l[q] + '/5' : '—')).join('\n');
+      const assunto = encodeURIComponent('Certificado — Arquiteto da Cultura Digital — ' + nome);
+      const corpo = encodeURIComponent(
+        'Olá, equipe Descomplicando a Docência!\n\n' +
+        'Segue em anexo o meu certificado e autoavaliação da trilha "Arquiteto da Cultura Digital".\n\n' +
+        'Nome: ' + (ident ? ident.nome : '—') + '\n' +
+        'E-mail institucional: ' + (ident ? ident.email : '—') + '\n' +
+        'Área de atuação: ' + (ident ? ident.area : '—') + '\n' +
+        'Rede de ensino: ' + (ident ? ident.rede : '—') + '\n' +
+        'XP final: ' + xpFeito + '/' + TOTAL_XP + ' · Missões: ' + done.length + '/' + totalMissoes + '\n' +
+        'Nível alcançado: ' + nivel + '\n\n' +
+        'Autoavaliação (1–5):\n' + linhas + '\n\n' +
+        'IMPORTANTE: anexe a este e-mail o arquivo "certificado-arquiteto-cultura-digital.pdf" gerado pelo botão "1. Gerar meu PDF".\n\n' +
+        'Autorizo o tratamento destes dados para fins educacionais e de pesquisa, conforme LGPD (Lei 13.709/2018).\n\n' +
+        'Atenciosamente,\n' + nome);
+      btnMail.href = 'mailto:descomplicandoadocencia@gmail.com?subject=' + assunto + '&body=' + corpo;
+    }
+    montarMailto();
+
+    const formAuto = document.getElementById('formAuto');
+    if (formAuto) {
+      formAuto.addEventListener('change', (e) => {
+        if (!e.target.matches('input[type="radio"]')) return;
+        const l = LS.get('likert', {});
+        l[e.target.name] = Number(e.target.value);
+        LS.set('likert', l);
+        pintaIconesLikert();
+        montarMailto();
+      });
+    }
+
+    /* Resumo da identificação */
+    const resumo = document.getElementById('identResumo');
+    if (resumo) resumo.innerHTML = ident
+      ? '<strong>' + ident.nome + '</strong><br>📧 ' + ident.email + '<br>📚 ' + ident.area + '<br>🏫 Rede: ' + ident.rede +
+        '<br>✅ LGPD aceito em ' + (ident.timestamp ? new Date(ident.timestamp).toLocaleDateString('pt-BR') : '—')
+      : '⚠️ Não identificado(a). <a href="index.html">Preencher agora</a>.';
+
+    /* PDF — certificado + autoavaliação (html2pdf.js carregado no <head> de final.html) */
+    const btnPDF = document.getElementById('btnGerar');
+    if (btnPDF) btnPDF.addEventListener('click', () => {
+      const l = LS.get('likert', {});
+      const faltam = Object.keys(LIKERT_PERGUNTAS).filter(q => !l[q]).length;
+      if (faltam > 0 && !confirm('Você deixou ' + faltam + ' questão(ões) da autoavaliação sem resposta. Gerar mesmo assim?')) return;
+      const d = new Date().toLocaleDateString('pt-BR');
+      const linhas = Object.keys(LIKERT_PERGUNTAS).map(q =>
+        '<tr><td style="padding:6px;border:1px solid #ccc">' + LIKERT_PERGUNTAS[q] +
+        '</td><td style="padding:6px;border:1px solid #ccc;text-align:center"><strong>' + (l[q] || '—') + '</strong>/5</td></tr>').join('');
+      const html = '<div style="font-family:Arial,sans-serif;padding:26px;color:#233038">' +
+        '<h1 style="font-size:20px;color:#0f5257;margin:0">🏆 Arquiteto da Cultura Digital</h1>' +
+        '<p style="font-size:12px;color:#666;margin:4px 0 16px">Certificado de jornada + autoavaliação · Trilha Gamificada de Capacitação Docente · ' + d + '</p>' +
+        '<h2 style="font-size:14px;color:#1d7a80;border-bottom:2px solid #c9a24b;padding-bottom:4px">Identificação</h2>' +
+        '<p style="font-size:12px;line-height:1.7"><strong>' + (ident ? ident.nome : '—') + '</strong><br>E-mail: ' + (ident ? ident.email : '—') + '<br>Área: ' + (ident ? ident.area : '—') + '<br>Rede: ' + (ident ? ident.rede : '—') + '</p>' +
+        '<h2 style="font-size:14px;color:#1d7a80;border-bottom:2px solid #c9a24b;padding-bottom:4px">Resultado</h2>' +
+        '<p style="font-size:12px">XP: <strong>' + xpFeito + '/' + TOTAL_XP + '</strong> · Missões: <strong>' + done.length + '/' + totalMissoes + '</strong> · Nível: <strong>' + nivel + '</strong></p>' +
+        '<h2 style="font-size:14px;color:#1d7a80;border-bottom:2px solid #c9a24b;padding-bottom:4px">Autoavaliação (1–5)</h2>' +
+        '<table style="border-collapse:collapse;width:100%;font-size:11px">' + linhas + '</table>' +
+        '<p style="font-size:10px;color:#666;margin-top:16px">Documento gerado pelo próprio participante. Dados tratados conforme LGPD (Lei 13.709/2018) exclusivamente para fins educacionais e de pesquisa do projeto Descomplicando a Docência.</p></div>';
+      const holder = document.createElement('div');
+      holder.innerHTML = html;
+      document.body.appendChild(holder);
+      html2pdf().set({ margin: 10, filename: 'certificado-arquiteto-cultura-digital.pdf', html2canvas: { scale: 2 }, jsPDF: { unit: 'mm', format: 'a4' } })
+        .from(holder).save()
+        .then(() => { holder.remove(); const st = document.getElementById('pdfStatus'); if (st) st.textContent = '✔ PDF gerado e baixado. Agora clique em "2. Enviar".'; });
+    });
+
+    renderStats();
+  } catch (error) {
+    console.error(error);
+    const elXP = document.getElementById('scoreXP');
+    if (elXP) elXP.textContent = 'Erro ao carregar o resultado.';
+  }
+}
