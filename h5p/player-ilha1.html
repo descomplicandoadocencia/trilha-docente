@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,follow">
-<title>H5P Player — Arquiteto da Cultura Digital</title>
+<title>H5P Ilha 1 — Saberes Digitais — Arquiteto da Cultura Digital</title>
 <style>
   html,body{margin:0;padding:0;background:#0b1f22;font-family:sans-serif}
   #h5p-container{width:100%;max-width:960px;margin:0 auto}
@@ -16,9 +16,12 @@
 <script src="https://cdn.jsdelivr.net/npm/h5p-standalone@3.6.3/dist/main.bundle.js"></script>
 <script src="player-core.js"></script>
 <script>
-  var params = new URLSearchParams(window.location.search);
-  var requestedDir = params.get('dir') || params.get('p') || 'ilha1-interactive-video';
-  H5PPlayer.initPlayer({ dir: requestedDir, containerId: 'h5p-container' });
+  H5PPlayer.initPlayer({
+    dir: 'ilha1-interactive-video',
+    containerId: 'h5p-container',
+    proximaIlhaUrl: '../aula.html?video=ilha2-ancora',
+    proximaIlhaRotulo: 'Ir para a Ilha 2 →'
+  });
 </script>
 </body>
 </html>

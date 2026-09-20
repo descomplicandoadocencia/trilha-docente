@@ -1,3 +1,10 @@
 User-agent: *
 Allow: /
+Allow: /h5p/ilha1-interactive-video/
+Allow: /h5p/ilha2-branching-scenario/
+Allow: /h5p/ilha3-course-presentation/
+Allow: /h5p/ilha4-dialog-cards/
+Allow: /h5p/ilha4-documentation-tool/
+Disallow: /h5p/libraries/
+Disallow: /h5p/ilha1-interactive-video/libraries/
 Sitemap: https://trilha.descomplicandoadocencia.com.br/sitemap.xml
