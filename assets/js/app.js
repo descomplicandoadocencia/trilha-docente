@@ -265,6 +265,19 @@ const LIKERT_PERGUNTAS = {
   q5: 'Aplicar o OAD do Desafio Final com meus alunos'
 };
 
+/* Persistência da autoavaliação Likert — chave localStorage 'acd_likert'
+   (o helper LS já prefixa 'acd_', então LS.set('likert', ...) grava 'acd_likert').
+   LGPD: sem PII aqui — a identificação fica apenas na chave 'acd_ident'. */
+function saveLikert(field, value) {
+  const l = LS.get('likert', {});
+  l[field] = Number(value);
+  LS.set('likert', l);
+  return l;
+}
+function restoreLikert() {
+  return LS.get('likert', {});
+}
+
 async function initFinal() {
   try {
     await loadVideos();
@@ -314,7 +327,7 @@ async function initFinal() {
     }
 
     /* 6) Autoavaliação Likert 1–5 — persistida em localStorage 'acd_likert' */
-    const likert = LS.get('likert', {});
+    const likert = restoreLikert();
     document.querySelectorAll('.likert .opts').forEach(box => {
       const name = box.dataset.q;
       const salvo = likert[name];
@@ -340,7 +353,7 @@ async function initFinal() {
     const btnMail = document.getElementById('sendMailBtn');
     function montarMailto() {
       if (!btnMail) return;
-      const l = LS.get('likert', {});
+      const l = restoreLikert();
       const nome = ident ? ident.nome : 'Participante';
       const linhas = Object.keys(LIKERT_PERGUNTAS).map(q =>
         '• ' + LIKERT_PERGUNTAS[q] + ': ' + (l[q] ? l[q] + '/5' : '—')).join('\n');
@@ -366,9 +379,9 @@ async function initFinal() {
     if (formAuto) {
       formAuto.addEventListener('change', (e) => {
         if (!e.target.matches('input[type="radio"]')) return;
-        const l = LS.get('likert', {});
-        l[e.target.name] = Number(e.target.value);
-        LS.set('likert', l);
+        saveLikert(e.target.name, e.target.value); // salva imediatamente em acd_likert
+        const fs = e.target.closest('fieldset');
+        if (fs) fs.removeAttribute('aria-invalid');
         pintaIconesLikert();
         montarMailto();
       });
@@ -384,9 +397,21 @@ async function initFinal() {
     /* PDF — certificado + autoavaliação (html2pdf.js carregado no <head> de final.html) */
     const btnPDF = document.getElementById('btnGerar');
     if (btnPDF) btnPDF.addEventListener('click', () => {
-      const l = LS.get('likert', {});
-      const faltam = Object.keys(LIKERT_PERGUNTAS).filter(q => !l[q]).length;
-      if (faltam > 0 && !confirm('Você deixou ' + faltam + ' questão(ões) da autoavaliação sem resposta. Gerar mesmo assim?')) return;
+      const l = restoreLikert();
+      /* validação: se algum Likert estiver em branco, marca aria-invalid e foca o 1º em falta */
+      document.querySelectorAll('#formAuto fieldset').forEach(fs => fs.removeAttribute('aria-invalid'));
+      const faltando = Object.keys(LIKERT_PERGUNTAS).filter(q => !l[q]);
+      if (faltando.length > 0) {
+        faltando.forEach(q => {
+          const fs = document.querySelector('#formAuto fieldset[data-q="' + q + '"]');
+          if (fs) fs.setAttribute('aria-invalid', 'true');
+        });
+        const primeiro = document.querySelector('#formAuto fieldset[aria-invalid="true"] input');
+        if (primeiro) primeiro.focus();
+        const st = document.getElementById('pdfStatus');
+        if (st) st.textContent = '⚠️ Responda as ' + faltando.length + ' questão(ões) marcadas antes de gerar o PDF.';
+        return;
+      }
       const d = new Date().toLocaleDateString('pt-BR');
       const linhas = Object.keys(LIKERT_PERGUNTAS).map(q =>
         '<tr><td style="padding:6px;border:1px solid #ccc">' + LIKERT_PERGUNTAS[q] +

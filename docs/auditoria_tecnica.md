@@ -120,7 +120,7 @@ e me mostre a saída.
 **Severidade:** 🔴 crítico | **Esforço:** ~30 min | **Aceitação:** após Likert+Pdf, `localStorage.getItem('acd_likert')` retorna objeto `{autoaval: 4, regen: 3, ...}`.
 
 ```markdown
-PROMPT:
+PROMPT: OK 
 Você vai adicionar persistência da autoavaliação Likert no projeto.
 Arquivo: assets/js/app.js + final.html (caixa .score-hero).
 Sintoma: a autoavaliação de final.html (5 afirmações tipo "Estou mais confiante para usar IA")
